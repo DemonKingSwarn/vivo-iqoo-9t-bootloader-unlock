@@ -26,5 +26,8 @@ __pycache__/
 *.log
 kernel_dump
 
+# own linux fork (separate repo)
+linux-iqoo9t/
+
 # local agent scaffolding
 .opencode/

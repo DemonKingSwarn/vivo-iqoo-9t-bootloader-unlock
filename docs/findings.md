@@ -1,22 +1,26 @@
 # iQOO 9T (I2201 / vivo PD2217F) — Bootloader Unlock & Root Recon
 
-**Date:** 2026-10-19
+**Date:** 2026-10-19 (updated 2026-10-20)
 **Host:** Linux, adb/fastboot platform-tools 37.0.1
 **Device serial:** 15903686880004Q (USB, adb authorized)
 **Scope:** §1–§12 are read-only reconnaissance (no partition written, no `flashing
 unlock` issued). **From §13 onward the device was modified**: temporary kernel
 root, then a manual bootloader unlock by writing the `devinfo` partition. See
-§15–§17 for the unlock. **Outcome: bootloader unlocked (`ro.boot.flash.locked =
-0`, verified-boot state `orange`), confirmed via both Android and fastboot.**
+§15–§17 for the unlock. **Outcome: bootloader unlocked (`devinfo[0x0d]=[0x0e]=1`,
+confirmed via both Android and fastboot), Magisk 30.7 root, a crDroid GSI
+installed, and an own Linux kernel fork started — see §18–§20.** Note: from §19
+onward the running OS reports `ro.boot.flash.locked=1` /
+`vbmeta.device_state=locked` / `verifiedbootstate=green` (GSI property
+spoofing); `devinfo` remains the source of truth.
 
 ---
 
-> **Repository note (post-write-up reorganisation).** Artifacts formerly
-> referenced under `/tmp/opencode/` are now in this repository:
-> `tools/device/` holds the C payloads, `tools/host/` holds the Python control
-> scripts, and `tools/build.sh` rebuilds the binaries. `/tmp` is not
-> persistent across reboots. The step-by-step procedure is
-> [`guide.md`](guide.md).
+> **Repository note (post-write-up reorganisation).** Everything needed is in
+> this repository: `tools/device/` holds the C payloads, `tools/host/` the
+> Python control scripts, `tools/build.sh` rebuilds the binaries, and generated
+> images live under `artifacts/` (git-ignored). No host `$TMPDIR` paths are
+> referenced anywhere; `/tmp` is not persistent across reboots. The step-by-step
+> procedure is [`guide.md`](guide.md).
 
 ---
 
@@ -236,7 +240,7 @@ Working REA evidence collected after setup:
   `ev_ed98520d1024084be6c03765c7c857a0b28d0cfb584b0455a5e29b24647970c3`
   (`versionName 6.0`, `versionCode 160000`, `[ SYSTEM HAS CODE ]`, 160 requested permissions).
 - `pull_adb_package` on `com.android.settings` → **complete**:
-  `/tmp/opencode/com.android.settings/Settings.apk`, 153,689,201 bytes.
+  `Settings.apk` (153,689,201 bytes; pulled locally, not committed).
 
 Not yet possible: `inspect_android_package` (needs the caller-supplied JADX MCP
 JAR), `decode_android_resources` (needs apktool), native `open_binary` on the
@@ -451,7 +455,7 @@ without sending it.
 
 ### Reliable primitive
 
-- Ported `cheese_pa` (static aarch64, in `/tmp/opencode/zenfone9-root/src`).
+- Ported `cheese_pa` (static aarch64, source in `tools/device/cheese_pa.c`).
   `CHEESE_SELFTEST=1` passes; `CHEESE_COPY_WRITE_TEST=1` passes after two bug
   fixes: build the page table **before** staging the payload (the original
   stages then `setup_pagetables()` memsets the page), and **wait for the GPU
@@ -460,8 +464,8 @@ without sending it.
   caches the translation of the VA page used by the first op.
   - read:  `CHEESE_PROBE_ONLY=1 CHEESE_NO_RETRY=1 CHEESE_TARGET_PA=0x...`
   - write: `CHEESE_POKE=1 ... CHEESE_WRITE_PA=0x... CHEESE_WRITE_VAL=0x...`
-- Helpers: `/tmp/opencode/patch_iqoo9t.py` (verify/patch/restore),
-  `/tmp/opencode/write_words.py` (retrying dword writer).
+- Helpers: `tools/host/iqoo9t.py` (verify/patch/restore),
+  `tools/host/write_words.py` (retrying dword writer).
 - The kernel resolves the slide from `init_task.cred`; on-device reads:
   `init_task.cred = real_cred = 0xffffffe8aebb0a60`.
 
@@ -495,8 +499,8 @@ without sending it.
 - `fastboot flashing unlock` was still never run; the unlock token remains
   RSA-2048 server-signed and is not forgeable.
 - Clean-up: the original 16 dwords of `__do_sys_capset` are in
-  `/tmp/opencode/patch_iqoo9t.py` (`ORIG`); restore with
-  `patch_iqoo9t.py restore`, and set `selinux_state` back to `0x01010001`
+  `tools/host/iqoo9t.py` (`ORIG`); restore with
+  `tools/host/iqoo9t.py restore`, and set `selinux_state` back to `0x01010001`
   (or reboot — after the reboot `getenforce=Enforcing` again).
 
 ---
@@ -544,7 +548,7 @@ PC-relative, so both survive reboots (no per-boot slide needed):
 2. write `init_cred.usage` (PA `0xAA7B0A60`) = `0x7FFFFFFF`
 3. write `selinux_state` (PA `0xAAA42B90`) = `0x01010000` until `getenforce` = Permissive
 
-Tooling: `/tmp/opencode/rootctl_iqoo9t.py {status,arm,disarm,su CMD}`.
+Tooling: `tools/host/rootctl.py {status,arm,disarm,su CMD}`.
 
 ### Verified stable
 
@@ -570,7 +574,7 @@ Tooling: `/tmp/opencode/rootctl_iqoo9t.py {status,arm,disarm,su CMD}`.
 ### Rationale
 
 The ABL's unlock predicates were recovered from the ABL PE
-(`.../file-f536d559-.../section1.pe`, disassembled to `/tmp/opencode/abl.asm`):
+(`.../file-f536d559-.../section1.pe`, disassembled offline with `llvm-objdump` (not stored)):
 
 ```
 is_device_unlocked()          = devinfo[0x0d] != 0   OR  byte[0xa74d0] != 0
@@ -594,7 +598,7 @@ This is a *trust-decision overwrite*, not an exploit of the RSA unlock token
 | `0x90` | (unknown, set by ABL) | `01` |
 
 - Block device: `/dev/block/sde28`, 4096 bytes.
-- Pristine image saved host-side: `/tmp/opencode/devinfo.img`.
+- Unlocked image saved host-side: `artifacts/devinfo_unlocked.img` (`0x0d=0x0e=0x01`); the pre-unlock copy was lost with the post-unlock wipe.
 - Non-zero bytes in the pristine image were only the magic, `0x0f`, and `0x90`
   (no CRC field present).
 
@@ -603,7 +607,7 @@ This is a *trust-decision overwrite*, not an exploit of the RSA unlock token
 Built as a single static ARM64 binary, **in-process** (no shell `exec`, to keep
 the number of GPU operations minimal):
 
-`/tmp/opencode/zenfone9-root/src/devinfo_unlock.c` → `/tmp/opencode/devinfo_unlock`
+`tools/device/devinfo_unlock.c` → `tools/out/devinfo_unlock`
 
 Sequence:
 
@@ -730,11 +734,11 @@ FAILED (remote: 'GetVar Variable Not found')   <- A/B naming differs on this ABL
 
 | File | Purpose |
 |---|---|
-| `/tmp/opencode/devinfo.img` | pristine 4096-byte `devinfo` backup |
-| `/tmp/opencode/zenfone9-root/src/devinfo_unlock.c` | in-process unlock payload source |
-| `/tmp/opencode/devinfo_unlock` | static ARM64 payload (pushed to `/data/local/tmp/`) |
-| `/tmp/opencode/abl.asm` | ABL AArch64 disassembly (unlock predicates) |
-| `/tmp/opencode/rootctl_iqoo9t.py` | `{status,arm,disarm,su CMD}` temporary-root control |
+| `artifacts/devinfo_unlocked.img` | 4096-byte `devinfo` as written (unlock flags set) |
+| `tools/device/devinfo_unlock.c` | in-process unlock payload source |
+| `tools/out/devinfo_unlock` | static ARM64 payload (pushed to `/data/local/tmp/`) |
+| — | ABL disassembly was generated offline, not stored |
+| `tools/host/rootctl.py` | `{status,arm,disarm,su CMD}` control |
 
 ### Net result
 
@@ -747,3 +751,121 @@ Starting from a **locked** iQOO 9T with production Qualcomm secure boot, we:
    sides of the verified-boot boundary.
 
 The device is now ready to receive a custom boot image (Linux) via fastboot.
+
+---
+
+## §18 — vbmeta / AVB layout (corrected parse; replaces the approximate §recon numbers)
+
+Two of the four vbmeta images are real AVB images, built by vivo's
+**avbtool 1.3.0** (release string at `0x80`). The other two are empty stubs:
+
+| Partition (block dev) | Signed | Algorithm | Descriptors |
+|---|---|---|---|
+| `vbmeta` (`/dev/block/sde16`) | yes | `SHA256_RSA2048` | 4 chain-partition descriptors |
+| `vbmeta_system` (`/dev/block/sda6`) | yes | `SHA256_RSA2048` | hash descriptors (disk/system) |
+| `vbmeta_oem` (`/dev/block/sda16`) | no | `NONE` (`alg=0`) | none |
+| `vbmeta_vgc` (`/dev/block/sda15`) | no | `NONE` (`alg=0`) | none |
+
+Corrected facts (the first-pass parse had field offsets wrong):
+
+- **Signature is RSA-2048, not RSA-4096.** Evidence is consistent across fields:
+  signature size `0x100` (256 B), hash size `0x20`, public key blob
+  `0x208` (520 B = 8 B header + 512 B modulus/precomputed values), and every
+  embedded key prefixed with `key_num_bits = 0x800` (2048).
+- Header layout (vivo build; big-endian, `u32` fields):
+
+  | Offset | Field | `vbmeta` | `vbmeta_system` |
+  |---|---|---|---|
+  | `0x10` | auth block size | `0x140` (320 B) | `0x140` (320 B) |
+  | `0x18` | aux block size | `0xbc0` (3008 B) | `0x10c0` (4288 B) |
+  | `0x1c` | algorithm | `1` (SHA256_RSA2048) | `1` |
+  | `0x2c` | hash size | `0x20` | `0x20` |
+  | `0x3c` | signature size | `0x100` | `0x100` |
+  | `0x4c` | public key size | `0x208` (520 B) | `0x208` |
+  | `0x6c` | descriptors size | `0x9b8` (2488 B) | `0xe88` (3720 B) |
+
+- **`rollback_index` = 0 in the header.** The earlier read-back numbers
+  "3008 / 4240" were block sizes (`0xbc0` and `0x10c0`), not rollback values —
+  no anti-rollback counter is exercised by flashing these partitions. Flags
+  (verity/verification enable) are `0`, i.e. fully enforced.
+- `vbmeta` descriptors are **all chain-partition type**, each embedding its own
+  RSA-2048 public key, chaining to: `boot` (rollback_index_location `1`),
+  `dtbo` (`4`), `vbmeta_system` (`13`), `vendor_boot` (`11`). So `boot`,
+  `dtbo` and `vendor_boot` trust comes from here, and `system` verification
+  comes via the `vbmeta_system` chain.
+- Practical consequence: flashing the dumped stock `vbmeta.img` with
+  `--disable-verity --disable-verification` (flags set in the header) keeps the
+  user-selected `boot`/`system` content bootable; no rollback counter is
+  touched.
+
+### Artifacts
+
+| File | Contents |
+|---|---|
+| `artifacts/vbmeta.img` etc. | dumped stock images (64 KiB each) |
+| `artifacts/devinfo_unlocked.img` | 4096-byte `devinfo` as currently written (`magic ANDROID-BOOT!`, unlock flags set) |
+
+---
+
+## §19 — crDroid GSI installed (post-unlock daily driver)
+
+A crDroid GSI (`tdgsi_arm64_ab`, crDroid 10.13 "bgN-slim" unofficial build,
+Android 14) was flashed into the `system` logical partition inside `super`
+(device is A-only/slotless, dynamic partitions — §recon). State after boot:
+
+- Boots and passes daily use; `ro.build.version.release=14`,
+  `ro.crdroid.version=10.13` — while the reported build fingerprint still shows
+  the vendor Android-12 base string, which is normal for a GSI.
+- **Magisk root kept working**: `su` gives uid 0 with SELinux context
+  `u:r:magisk:s0` (Magisk 30.7).
+- **Bootloader props are spoofed by the GSI**: the running system reports
+  `ro.boot.flash.locked=1`, `ro.boot.vbmeta.device_state=locked`,
+  `ro.boot.verifiedbootstate=green` — but reading `/dev/block/by-name/devinfo`
+  directly (as root) still shows `devinfo[0x0d]=0x0e=0x01`, i.e. **unlocked**.
+  After a GSI, trust `devinfo`, not the properties.
+- Data was wiped by the GSI install (any `/data`-side tooling recovered from
+  this repo/§13–§17 does not persist through it).
+
+---
+
+## §20 — DTB extraction and the Linux kernel fork start
+
+### DTB inventory
+
+`tools/host/extract_dtbs.py` (written here) splits all three container types on
+the device and names the trees by their `model`/`compatible` strings:
+
+- 11 trees from `dtbo` (device-specific overlays, one per SKU/panel/PMIC
+  combination),
+- 6 base SoC trees from `vendor_boot`,
+- 1 live merged tree from `/sys/firmware/fdt` (model
+  `Cape QRD with PM8008 PD2217F_EX`).
+
+All are committed under `DTB/` with a `manifest.tsv` and `SHA256SUMS`.
+
+### Upstream status (kernel 7.2.11)
+
+- There is **no `sm8475` / "cape" platform support** in upstream 7.2.11 (nor in
+  torvalds master as of 2026-10-20). The closest mainline platform is
+  `sm8450.dtsi` (Waipio); the SM8475 is the same die re-binned with per-device
+  fan-out, so `sm8450.dtsi` is the base.
+- All the PMICs our live DTB uses have upstream `.dtsi` includes already:
+  `pm8350`, `pm8350b`, `pm8350c`, `pm8450`, `pmk8350`, `pmr735a`, `pmr735b`
+  (only `pm8008i`/`pm8008j` camera/display regulators are device-specific).
+- Toolchain: Android NDK r29 (`tools/.toolchain/android-ndk-r29/`) with
+  `LLVM=1 LLVM_IAS=1` builds the tree clean.
+
+### Fork state
+
+- Repo: `linux-iqoo9t/` (own fork, upstream 7.2.11 as commit 1, branch
+  `iqoo9t-cape`).
+- Planned next commits: add `sm8475.dtsi` + `sm8475-iqoo9t.dts` derived from the
+  `DTB/live/` tree (not the vendor `.dts` files), with panel, UART
+  (`qup_uart@99c000`, 115200n8 — there is no bootloader framebuffer, so early
+  debug must go over a USB NCM/ACM gadget), UFS, UDC, TLMM and the PMIC
+  regulator set above.
+- Build target for milestone 1: `Image` + `sm8475-iqoo9t.dtb`, tested with
+  `fastboot boot` only (no flash) alongside a busybox initramfs that
+  configures the configfs NCM/ACM gadget for readout, since nothing else is
+  guaranteed until UFS root is proven.
+
