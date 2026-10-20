@@ -63,6 +63,9 @@ Full instructions, including the `Clear all data` step, are in
   from [RamenFast/zenfone9-root](https://github.com/RamenFast/zenfone9-root),
   GPL-3.0; see `tools/device/LICENSE` and `UPSTREAM_COMMIT`).
 * `tools/host/` — Python control scripts, no third-party dependencies.
+* `DTB/` — 18 device tree blobs extracted from the phone (`dtbo` overlays,
+  `vendor_boot` base SoCs, and the live merged tree), with a manifest and
+  checksums.
 * `firmware/` — **README only**; multi-GB images are not committed.
 * `artifacts/` — generated backups and boot images (git-ignored).
 

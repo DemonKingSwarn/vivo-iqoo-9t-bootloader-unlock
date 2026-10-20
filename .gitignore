@@ -15,6 +15,9 @@ firmware/**/*.melf
 artifacts/*
 !artifacts/README.md
 
+# raw partition dumps (large, re-dumpable; split DTBs are committed)
+DTB/raw/
+
 # python
 __pycache__/
 *.pyc

@@ -9,6 +9,7 @@ Python 3, stdlib only. All scripts import `iqoo9t.py`.
 | `poke.py` | `read / write / words` one physical address |
 | `selinux.py` | `status / on / off` (Enforcing ↔ Permissive) |
 | `write_words.py` | retrying multi-dword writer (compat wrapper around `poke.py`) |
+| `extract_dtbs.py` | split DTBs from DTBO / vendor_boot / boot / live FDT |
 | `pull-stock-boot.sh` | dump the live `boot` partition for Magisk |
 
 ## Quick start
