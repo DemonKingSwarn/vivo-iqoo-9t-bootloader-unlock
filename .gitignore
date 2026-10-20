@@ -1,0 +1,27 @@
+# build / toolchain
+tools/.toolchain/
+tools/out/
+
+# firmware and derived images are large and re-obtainable
+firmware/*.7z
+firmware/*.zip
+firmware/**/*.img
+firmware/**/*.bin
+firmware/**/*.mbn
+firmware/**/*.elf
+firmware/**/*.melf
+
+# local artifacts (backups, patched images)
+artifacts/*
+!artifacts/README.md
+
+# python
+__pycache__/
+*.pyc
+
+# misc
+*.log
+kernel_dump
+
+# local agent scaffolding
+.opencode/
