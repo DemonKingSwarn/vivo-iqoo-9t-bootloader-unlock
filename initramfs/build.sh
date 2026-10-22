@@ -33,6 +33,8 @@ trap 'rm -rf "$STAGE"' EXIT
 mkdir -p "$STAGE"/{bin,sbin,proc,sys,dev,tmp,run,etc}
 cp "$BUSYBOX" "$STAGE/bin/busybox"
 chmod 0755 "$STAGE/bin/busybox"
+# /init is #!/bin/sh, so the shell must exist before init runs.
+ln -s busybox "$STAGE/bin/sh"
 cp "$HERE/init" "$STAGE/init"
 chmod 0755 "$STAGE/init"
 

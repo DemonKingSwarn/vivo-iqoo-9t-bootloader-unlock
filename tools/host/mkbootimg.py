@@ -81,6 +81,7 @@ def pack_v4(kernel: bytes, ramdisk: bytes, cmdline: str, page: int,
         + struct.pack("<4I", 0, 0, 0, 0)
         + struct.pack("<I", 4)
         + cmdline.encode().ljust(1536, b"\0")[:1536]
+        + struct.pack("<I", 0)  # signature_size (v4)
     )
     assert len(hdr) == 1584, len(hdr)
     return _pad(hdr, page) + _pad(kernel, page) + _pad(ramdisk, page)
