@@ -869,3 +869,53 @@ All are committed under `DTB/` with a `manifest.tsv` and `SHA256SUMS`.
   configures the configfs NCM/ACM gadget for readout, since nothing else is
   guaranteed until UFS root is proven.
 
+See §21 for what actually landed.
+
+## §21 — Milestone 1 payload: board DTS, UFS, eUSB2 and the boot image
+
+### Board DTS (`sm8450-iqoo9t.dts`)
+
+Upstream has no `sm8475` platform file, but it does ship the **SM8475 UFS PHY**
+programming (`drivers/phy/qualcomm/phy-qcom-qmp-ufs.c`: `sm8475_ufsphy_cfg`,
+`qcom,sm8475-qmp-ufs-phy`). So the board file includes `sm8450.dtsi` and
+overrides only what differs on Cape, everything taken from `DTB/live/`:
+
+| Item | Vendor (live DTB) | Mainline base | Board override |
+|---|---|---|---|
+| UFS PHY | `0x1d80000`, size `0x2000`, QMP v4 Cape | `phy@1d87000`, `0x1000` | `compatible = "qcom,sm8475-qmp-ufs-phy"`, `reg = <0 0x1d80000 0 0x2000>` |
+| UFS vcc | pm8350_l7 (2.4–3.54 V) | board-specific | `vreg_l7b_2p95` |
+| UFS vccq / vdd-hba / vddp-ref | pm8350_l9 (1.2 V) | board-specific | `vreg_l9b_1p2` |
+| UFS vdda-phy | pm8350_l5 (0.88 V) | board-specific | `vreg_l5b_0p88` |
+| UFS vdda-pll | pm8350c_l10 (1.2 V) | board-specific | `vreg_l10c_1p2` |
+| UFS reset | GPIO 210, active low | same convention | `reset-gpios = <&tlmm 210 GPIO_ACTIVE_LOW>` |
+| HS USB PHY | `0x88e3000`, **eUSB2**, `vdd`/`vdda12` | `phy@88e3000`, "hs-7nm" | `compatible = "qcom,usb-snps-eusb2-phy"`, `reg` `0x154`, clocks `<&gcc GCC_EUSB3_0_CLKREF_EN>` |
+| USB role/speed | `dr_mode = "otg"`, `maximum-speed = "high-speed"`, SS PHY disabled | OTG + role switch | peripheral, HS only, SS PHY dropped from `phys` |
+
+The vendor DT's USB is High-Speed only: it disables the USB3/DP combo PHY and
+points DWC3 at the eUSB2 HS PHY. We mirror that instead of pretending the SS
+PHY works.
+
+Two small fork patches:
+
+1. `drivers/phy/phy-snps-eusb2.c`: accept the vendor compatible
+   `qcom,usb-snps-eusb2-phy` and reuse the SM8550 eUSB2 data (same IP).
+2. `arch/arm64/boot/dts/qcom/Makefile`: build `sm8450-iqoo9t.dtb`.
+
+### Gotchas worth remembering
+
+- UFS PHY: vendor node is at `0x1d80000` with a `0x2000` window and compatible
+  `qcom,ufs-phy-qmp-v4-cape`. Mainline knows neither the address nor that
+  string, so the board DTS moves the node and uses
+  `qcom,sm8475-qmp-ufs-phy`.
+- UFS HC: the vendor node carries three `reg` ranges; the mainline `ufshc`
+  driver maps only the first, which is the one that matters.
+- eUSB2 HS PHY: mainline's `phy-snps-eusb2` does not match the vendor
+  compatible `qcom,usb-snps-eusb2-phy`; the fork adds it and reuses the SM8550
+  data. The two I2C eUSB2 repeaters have no mainline driver and must work on
+  their power-on defaults for now.
+- The stock boot header is v4 and its DTB lives in `vendor_boot`; a RAM-only
+  `fastboot boot` test therefore has to use a legacy v0 Image+DTB+ramdisk
+  image (see `tools/host/mkbootimg.py`).
+- Blind-debug scaffolding: simpledrm on the ABL splash carveout
+  (`splash@b8000000`) and ramoops at `0xba000000`, so a silent panic still
+  leaves a log in `/sys/fs/pstore` after the next boot.

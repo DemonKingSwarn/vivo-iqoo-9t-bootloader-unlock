@@ -1,0 +1,1003 @@
+path	compatible	reg	status
+/reserved-memory/aop_cmd_db_region@80860000	qcom,cmd-db	0x00 0x80860000 0x00 0x20000	okay
+/reserved-memory/sp_region	shared-dma-pool		okay
+/reserved-memory/linux,cma	shared-dma-pool		okay
+/reserved-memory/va_md_mem_region	shared-dma-pool		okay
+/reserved-memory/user_contig_region	shared-dma-pool		okay
+/reserved-memory/qseecom_region	shared-dma-pool		okay
+/reserved-memory/non_secure_display_region	shared-dma-pool		okay
+/reserved-memory/demura_heap_region	shared-dma-pool		okay
+/reserved-memory/qseecom_ta_region	shared-dma-pool		okay
+/reserved-memory/cnss_wlan_region	shared-dma-pool		okay
+/reserved-memory/audio_cma_region	shared-dma-pool		okay
+/reserved-memory/adsp_heap_region	shared-dma-pool		okay
+/reserved-memory/sdsp_region	shared-dma-pool		okay
+/reserved-memory/cdsp_eva_region	shared-dma-pool		okay
+/reserved-memory/ramoops_region	ramoops		okay
+/reserved-memory/mem_dump_region	shared-dma-pool		okay
+/sram@17D09400	mmio-sram	0x00 0x17d09400 0x00 0x400	okay
+/sram@17D09400/scp-shmem@0	arm,scp-shmem	0x00 0x00 0x00 0x400	okay
+/firmware/qcom_scm	qcom,scm-v1.1 qcom,scm		okay
+/firmware/qtee_shmbridge	qcom,tee-shared-memory-bridge		okay
+/firmware/qcom_smcinvoke	qcom,smcinvoke		okay
+/firmware/android	android,firmware		okay
+/firmware/android/vbmeta	android,vbmeta		okay
+/firmware/android/fstab	android,fstab		okay
+/firmware/android/fstab/vendor	android,vendor		disabled
+/cpus/cpu@0	qcom,kryo	0x00 0x00	okay
+/cpus/cpu@0/l2-cache	arm,arch-cache		okay
+/cpus/cpu@0/l2-cache/l3-cache	arm,arch-cache		okay
+/cpus/cpu@100	qcom,kryo	0x00 0x100	okay
+/cpus/cpu@200	qcom,kryo	0x00 0x200	okay
+/cpus/cpu@200/l2-cache	arm,arch-cache		okay
+/cpus/cpu@300	qcom,kryo	0x00 0x300	okay
+/cpus/cpu@400	qcom,kryo	0x00 0x400	okay
+/cpus/cpu@400/l2-cache	arm,arch-cache		okay
+/cpus/cpu@500	qcom,kryo	0x00 0x500	okay
+/cpus/cpu@500/l2-cache	arm,arch-cache		okay
+/cpus/cpu@600	qcom,kryo	0x00 0x600	okay
+/cpus/cpu@600/l2-cache	arm,arch-cache		okay
+/cpus/cpu@700	qcom,kryo	0x00 0x700	okay
+/cpus/cpu@700/l2-cache	arm,arch-cache		okay
+/idle-states/silver-c4	arm,idle-state		okay
+/idle-states/gold-c4	arm,idle-state		okay
+/idle-states/cluster-d4	domain-idle-state		okay
+/idle-states/cluster-e3	domain-idle-state		okay
+/cluster-device	qcom,lpm-cluster-dev		okay
+/soc	simple-bus		okay
+/soc/clocks/xo_board	fixed-clock		okay
+/soc/clocks/sleep_clk	fixed-clock		okay
+/soc/clock-controller@100000	qcom,cape-gcc syscon	0x100000 0x1f4200	okay
+/soc/clock-controller@aaf0000	qcom,cape-videocc syscon	0xaaf0000 0x10000	okay
+/soc/clock-controller@ade0000	qcom,cape-camcc syscon	0xade0000 0x20000	okay
+/soc/clock-controller@af00000	qcom,cape-dispcc syscon	0xaf00000 0x20000	okay
+/soc/clock-controller@3d90000	qcom,cape-gpucc syscon	0x3d90000 0xa000	okay
+/soc/syscon@17a80000	syscon	0x17a80000 0x21000	okay
+/soc/syscon@190ba000	syscon	0x190ba000 0x54	okay
+/soc/clock-controller@0	qcom,waipio-debugcc		okay
+/soc/qcom,cpufreq-hw	qcom,cpufreq-hw-epss	0x17d91000 0x1000 0x17d92000 0x1000 0x17d93000 0x1000 0x17d09804 0x04 0x17d09808 0x04 0x17d0980c 0x04	okay
+/soc/qcom,cpufreq-hw-debug	qcom,cpufreq-hw-epss-debug		okay
+/soc/qcom,gdsc@adf0004	qcom,gdsc	0xadf0004 0x04	okay
+/soc/qcom,gdsc@adf1004	qcom,gdsc	0xadf1004 0x04	okay
+/soc/qcom,gdsc@adf2004	qcom,gdsc	0xadf2004 0x04	okay
+/soc/qcom,gdsc@adf2050	qcom,gdsc	0xadf2050 0x04	okay
+/soc/qcom,gdsc@adf0078	qcom,gdsc	0xadf0078 0x04	okay
+/soc/qcom,gdsc@adf00d0	qcom,gdsc	0xadf00d0 0x04	okay
+/soc/qcom,gdsc@adf3050	qcom,gdsc	0xadf3050 0x04	okay
+/soc/qcom,gdsc@adf3098	qcom,gdsc	0xadf3098 0x04	okay
+/soc/qcom,gdsc@adf31dc	qcom,gdsc	0xadf31dc 0x04	okay
+/soc/qcom,gdsc@af09000	qcom,gdsc	0xaf09000 0x04	okay
+/soc/qcom,gdsc@af0b000	qcom,gdsc	0xaf0b000 0x04	okay
+/soc/syscon@162128	syscon	0x162128 0x04	okay
+/soc/qcom,gdsc@17b004	qcom,gdsc	0x17b004 0x04	okay
+/soc/qcom,gdsc@19d004	qcom,gdsc	0x19d004 0x04	okay
+/soc/qcom,gdsc@187004	qcom,gdsc	0x187004 0x04	okay
+/soc/qcom,gdsc@149004	qcom,gdsc	0x149004 0x04	okay
+/soc/syscon@3d9953c	syscon	0x3d9953c 0x04	okay
+/soc/qcom,gdsc@3d99108	qcom,gdsc	0x3d99108 0x04	okay
+/soc/syscon@3d99504	syscon	0x3d99504 0x04	okay
+/soc/syscon@3d99058	syscon	0x3d99058 0x04	okay
+/soc/syscon@3d99358	syscon	0x3d99358 0x04	okay
+/soc/syscon@3d9958c	syscon	0x3d9958c 0x04	okay
+/soc/qcom,gdsc@3d9905c	qcom,gdsc	0x3d9905c 0x04	okay
+/soc/qcom,gdsc@aaf809c	qcom,gdsc	0xaaf809c 0x04	okay
+/soc/qcom,gdsc@aaf804c	qcom,gdsc	0xaaf804c 0x04	okay
+/soc/qcom,gdsc@aaf80c0	qcom,gdsc	0xaaf80c0 0x04	okay
+/soc/qcom,gdsc@aaf8074	qcom,gdsc	0xaaf8074 0x04	okay
+/soc/psci	arm,psci-1.0		okay
+/soc/bamdma@3304000	qcom,bam-v1.7.0	0x3304000 0x20000 0x326b000 0x1000	okay
+/soc/slim@3340000	qcom,slim-ngd-v1.5.0	0x3340000 0x2c000 0x326a000 0x1000	okay
+/soc/slim@3340000/ngd@1/btfmslim-driver	slim217,221	0x01 0x00	okay
+/soc/bt_qca6490	qcom,qca6490		okay
+/soc/interrupt-controller@17100000	arm,gic-v3	0x17100000 0x10000 0x17180000 0x200000	okay
+/soc/interrupt-controller@17100000/msi-controller@17140000	arm,gic-v3-its	0x17140000 0x20000	okay
+/soc/pinctrl@f000000	qcom,cape-pinctrl	0xf000000 0x1000000	okay
+/soc/timer	arm,armv8-timer		okay
+/soc/rsc@17a00000	qcom,rpmh-rsc	0x17a00000 0x10000 0x17a10000 0x10000 0x17a20000 0x10000 0x17a30000 0x10000	okay
+/soc/rsc@17a00000/qcom,rpmhclk	qcom,waipio-rpmh-clk		okay
+/soc/rsc@17a00000/bcm_voter	qcom,bcm-voter		okay
+/soc/rsc@17a00000/qcom,dcvs-fp	qcom,dcvs-fp		okay
+/soc/rsc@17a00000/rpmh-regulator-gfxlvl	qcom,rpmh-arc-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-smpb10	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-smpb11	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-smpb12	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldob1	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldob2	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldob3	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldob5	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldob6	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldob7	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-lcxlvl	qcom,rpmh-arc-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldob9	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-smpc1	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-mxclvl	qcom,rpmh-arc-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-msslvl	qcom,rpmh-arc-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-cxlvl	qcom,rpmh-arc-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-smpc10	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc2	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc3	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc4	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc5	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc6	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc7	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc8	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc9	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc10	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc11	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc12	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoc13	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-bobc1	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldod1	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-smpe2	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-smpe3	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoe1	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoe2	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoe3	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoe4	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoe5	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoe6	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoe7	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldof1	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldof2	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldof4	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldof5	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldof6	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ebilvl	qcom,rpmh-arc-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-smph3	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-mmcxlvl	qcom,rpmh-arc-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-mxlvl	qcom,rpmh-arc-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-lmxlvl	qcom,rpmh-arc-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoh2	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoh3	qcom,rpmh-vrm-regulator		okay
+/soc/rsc@17a00000/rpmh-regulator-ldoh4	qcom,rpmh-vrm-regulator		okay
+/soc/cpuss-sleep-stats@17800054	qcom,cpuss-sleep-stats	0x17800054 0x04 0x17810054 0x04 0x17820054 0x04 0x17830054 0x04 0x17840054 0x04 0x17850054 0x04 0x17860054 0x04 0x17870054 0x04 0x178a0098 0x04 0x178c0000 0x10000	okay
+/soc/rsc@af20000	qcom,rpmh-rsc	0xaf20000 0x10000	okay
+/soc/rsc@af20000/bcm_voter	qcom,bcm-voter		okay
+/soc/rsc@af20000/sde_rsc_rpmh	qcom,sde-rsc-rpmh		okay
+/soc/llcc-pmu@19095000	qcom,llcc-pmu-ver2	0x19095000 0x300	okay
+/soc/qcom,pmu	qcom,pmu		okay
+/soc/qcom,dcvs	qcom,dcvs		okay
+/soc/qcom,dcvs/l3	qcom,dcvs-hw	0x17d90000 0x4000 0x17d90100 0xa0	okay
+/soc/qcom,dcvs/l3/sp	qcom,dcvs-path		okay
+/soc/qcom,dcvs/ddr	qcom,dcvs-hw		okay
+/soc/qcom,dcvs/ddr/sp	qcom,dcvs-path		okay
+/soc/qcom,dcvs/ddr/fp	qcom,dcvs-path		okay
+/soc/qcom,dcvs/llcc	qcom,dcvs-hw		okay
+/soc/qcom,dcvs/llcc/sp	qcom,dcvs-path		okay
+/soc/qcom,dcvs/llcc/fp	qcom,dcvs-path		okay
+/soc/qcom,dcvs/ddrqos	qcom,dcvs-hw		okay
+/soc/qcom,dcvs/ddrqos/sp	qcom,dcvs-path		okay
+/soc/qcom,memlat	qcom,memlat		okay
+/soc/qcom,memlat/ddr	qcom,memlat-grp		okay
+/soc/qcom,memlat/ddr/silver	qcom,memlat-mon		okay
+/soc/qcom,memlat/ddr/gold	qcom,memlat-mon		okay
+/soc/qcom,memlat/ddr/prime	qcom,memlat-mon		okay
+/soc/qcom,memlat/ddr/gold-compute	qcom,memlat-mon		okay
+/soc/qcom,memlat/ddr/prime-latfloor	qcom,memlat-mon		okay
+/soc/qcom,memlat/llcc	qcom,memlat-grp		okay
+/soc/qcom,memlat/llcc/silver	qcom,memlat-mon		okay
+/soc/qcom,memlat/llcc/gold	qcom,memlat-mon		okay
+/soc/qcom,memlat/llcc/gold-compute	qcom,memlat-mon		okay
+/soc/qcom,memlat/l3	qcom,memlat-grp		okay
+/soc/qcom,memlat/l3/silver	qcom,memlat-mon		okay
+/soc/qcom,memlat/l3/gold	qcom,memlat-mon		okay
+/soc/qcom,memlat/l3/prime	qcom,memlat-mon		okay
+/soc/qcom,memlat/l3/prime-compute	qcom,memlat-mon		okay
+/soc/qcom,memlat/ddrqos	qcom,memlat-grp		okay
+/soc/qcom,memlat/ddrqos/gold	qcom,memlat-mon		okay
+/soc/qcom,memlat/ddrqos/prime-latfloor	qcom,memlat-mon		okay
+/soc/qcom,bwmon-llcc@190b6400	qcom,bwmon4	0x190b6400 0x300 0x190b6300 0x200	okay
+/soc/qcom,bwmon-ddr@19091000	qcom,bwmon5	0x19091000 0x1000	okay
+/soc/qrtr-gunyah	qcom,qrtr-gunyah		okay
+/soc/qcom,virtio_backend@0	qcom,virtio_backend		okay
+/soc/timer@17420000	arm,armv7-timer-mem	0x17420000 0x1000	okay
+/soc/interrupt-controller@b220000	qcom,pdc qcom,cape-pdc	0xb220000 0x30000 0x174000f0 0x64	okay
+/soc/tz-log@146AA720	qcom,tz-log	0x146aa720 0x3000	okay
+/soc/qseecom@c1700000	qcom,qseecom		okay
+/soc/qcedev@1de0000	qcom,qcedev	0x1de0000 0x20000 0x1dc4000 0x24000	okay
+/soc/qcedev@1de0000/qcom_cedev_ns_cb	qcom,qcedev,context-bank		okay
+/soc/qcedev@1de0000/qcom_cedev_s_cb	qcom,qcedev,context-bank		okay
+/soc/qrng@10c3000	qcom,msm-rng	0x10c3000 0x1000	okay
+/soc/qcom,mem-buf-msgq	qcom,mem-buf-msgq		okay
+/soc/qcom,mem-buf	qcom,mem-buf		okay
+/soc/qcom,spmi@c42d000	qcom,spmi-pmic-arb	0xc42d000 0x4000 0xc400000 0x3000 0xc500000 0x400000 0xc440000 0x80000 0xc4c0000 0x10000	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0	qcom,spmi-pmic	0x00 0x00	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/pon_hlos@1300	qcom,pm8998-pon	0x1300 0x800	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/pon_hlos@1300/pwrkey	qcom,pmk8350-pwrkey		okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/pon_hlos@1300/resin	qcom,pmk8350-resin		okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/vadc@3100	qcom,spmi-adc7	0x3100	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/adc_tm@3400	qcom,adc-tm7	0x3400	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@7000	qcom,spmi-sdam	0x7000	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@7100	qcom,spmi-sdam	0x7100	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@7400	qcom,spmi-sdam	0x7400	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@7c00	qcom,spmi-sdam	0x7c00	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@7d00	qcom,spmi-sdam	0x7d00	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@8400	qcom,spmi-sdam	0x8400	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@8500	qcom,spmi-sdam	0x8500	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@8600	qcom,spmi-sdam	0x8600	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@9800	qcom,spmi-sdam	0x9800	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/sdam@9d00	qcom,spmi-sdam	0x9d00	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/pinctrl@b000	qcom,pmk8350-gpio	0xb000	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/rtc@6100	qcom,pmk8350-rtc	0x6100 0x6200	okay
+/soc/qcom,spmi@c42d000/qcom,pmk8350@0/adc_tm_iio@3400	qcom,adc-tm7-iio	0x3400	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350@1	qcom,spmi-pmic	0x01 0x00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350@1/qcom,temp-alarm@a00	qcom,spmi-temp-alarm	0xa00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350@1/pinctrl@8800	qcom,pm8350-gpio	0x8800	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350c@2	qcom,spmi-pmic	0x02 0x00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350c@2/qcom,temp-alarm@a00	qcom,spmi-temp-alarm	0xa00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350c@2/pinctrl@8800	qcom,pm8350c-gpio	0x8800	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350c@2/pwms@e800	qcom,pwm-lpg	0xe800	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350c@2/pwms@eb00	qcom,pwm-lpg	0xeb00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350c@2/qcom,leds@ef00	qcom,tri-led	0xef00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350c@2/bcl@4700	qcom,bcl-v5	0x4700 0x100	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350c@2/qcom,flash_led@ee00	qcom,pm8350c-flash-led	0xee00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350b@3	qcom,spmi-pmic	0x03 0x00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350b@3/qcom,temp-alarm@a00	qcom,spmi-temp-alarm	0xa00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350b@3/qcom,pbs@1900	qcom,qpnp-pbs	0x1900	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350b@3/pinctrl@8800	qcom,pm8350b-gpio	0x8800	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350b@3/bcl@4700	qcom,bcl-v5	0x4700 0x100	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350b@3/bcl-soc	qcom,msm-bcl-soc		okay
+/soc/qcom,spmi@c42d000/qcom,pm8350b@3/qcom,hv-haptics@f000	qcom,hv-haptics	0xf000 0xf100 0xf200	okay
+/soc/qcom,spmi@c42d000/qcom,pm8350b@3/qcom,amoled	qcom,qpnp-amoled-regulator		okay
+/soc/qcom,spmi@c42d000/qcom,pm8350b@3/qcom,amoled-ecm@f900	qcom,amoled-ecm	0xf900	okay
+/soc/qcom,spmi@c42d000/qcom,pmr735a@4	qcom,spmi-pmic	0x04 0x00	okay
+/soc/qcom,spmi@c42d000/qcom,pmr735a@4/qcom,temp-alarm@a00	qcom,spmi-temp-alarm	0xa00	okay
+/soc/qcom,spmi@c42d000/qcom,pmr735a@4/pinctrl@8800	qcom,pmr735a-gpio	0x8800	okay
+/soc/qcom,spmi@c42d000/qcom,pmr735b@5	qcom,spmi-pmic	0x05 0x00	okay
+/soc/qcom,spmi@c42d000/qcom,pmr735b@5/qcom,temp-alarm@a00	qcom,spmi-temp-alarm	0xa00	okay
+/soc/qcom,spmi@c42d000/qcom,pmr735b@5/pinctrl@8800	qcom,pmr735b-gpio	0x8800	okay
+/soc/qcom,spmi@c42d000/qcom,pm8450@7	qcom,spmi-pmic	0x07 0x00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8450@7/qcom,temp-alarm@a00	qcom,spmi-temp-alarm	0xa00	okay
+/soc/qcom,spmi@c42d000/qcom,pm8450@7/pinctrl@8800	qcom,pm8450-gpio	0x8800	okay
+/soc/qcom,spmi@c432000	qcom,spmi-pmic-arb	0xc432000 0x4000 0xc400000 0x3000 0xc500000 0x400000 0xc440000 0x80000 0xc4d0000 0x10000	okay
+/soc/qcom,spmi-debug@10b14000	qcom,spmi-pmic-arb-debug	0x10b14000 0x60 0x221c8784 0x04	okay
+/soc/qcom,spmi-debug@10b14000/qcom,pmk8350-debug@0	qcom,spmi-pmic	0x00 0x00	okay
+/soc/qcom,spmi-debug@10b14000/qcom,pm8350-debug@1	qcom,spmi-pmic	0x01 0x00	okay
+/soc/qcom,spmi-debug@10b14000/qcom,pm8350c-debug@2	qcom,spmi-pmic	0x02 0x00	okay
+/soc/qcom,spmi-debug@10b14000/qcom,pm8350b-debug@3	qcom,spmi-pmic	0x03 0x00	okay
+/soc/qcom,spmi-debug@10b14000/qcom,pmr735a-debug@4	qcom,spmi-pmic	0x04 0x00	okay
+/soc/qcom,spmi-debug@10b14000/qcom,pmr735b-debug@5	qcom,spmi-pmic	0x05 0x00	okay
+/soc/qcom,spmi-debug@10b14000/qcom,pm8450-debug@7	qcom,spmi-pmic	0x07 0x00	okay
+/soc/qcom,spmi-debug@10b14000/qcom,pm8010-debug@8	qcom,spmi-pmic	0x08 0x00	okay
+/soc/qcom,spmi-debug@10b14000/qcom,pm8010-debug@9	qcom,spmi-pmic	0x09 0x00	okay
+/soc/qcom,pmic_glink	qcom,pmic-glink		okay
+/soc/qcom,pmic_glink/qcom,battery_charger	qcom,battery-charger		okay
+/soc/qcom,pmic_glink/qcom,ucsi	qcom,ucsi-glink		okay
+/soc/qcom,pmic_glink/qcom,altmode	qcom,altmode-glink		okay
+/soc/qcom,pmic_glink/cms_v5	vivo,charger-monitor-v5		okay
+/soc/qcom,pmic_glink_log	qcom,pmic-glink		okay
+/soc/qcom,pmic_glink_log/qcom,battery_debug	qcom,battery-debug		okay
+/soc/qcom,pmic_glink_log/qcom,charger_ulog_glink	qcom,charger-ulog-glink		okay
+/soc/qcom,pmic_glink_log/qcom,spmi_glink_debug	qcom,spmi-glink-debug		okay
+/soc/qcom,pmic_glink_log/qcom,spmi_glink_debug/spmi@0/qcom,pm8350b-debug@3	qcom,spmi-pmic	0x03 0x00	okay
+/soc/qcom,pmic_glink_log/qcom,spmi_glink_debug/spmi@1/qcom,smb1394-debug@9	qcom,spmi-pmic	0x09 0x00	okay
+/soc/qcom,pmic_glink_log/qcom,spmi_glink_debug/spmi@1/qcom,smb1394-debug@b	qcom,spmi-pmic	0x0b 0x00	okay
+/soc/qcom,pmic_glink_log/qcom,spmi_glink_debug/spmi@1/qcom,smb1396-debug@d	qcom,spmi-pmic	0x0d 0x00	okay
+/soc/qcom,secure-buffer	qcom,secure-buffer		okay
+/soc/soc-sleep-stats@c3f0000	qcom,rpmh-sleep-stats	0xc3f0000 0x400	okay
+/soc/subsystem-sleep-stats@c3f0000	qcom,subsystem-sleep-stats	0xc3f0000 0x400	okay
+/soc/sys-pm-vx@c320000	qcom,sys-pm-violators qcom,sys-pm-cape	0xc320000 0x400	okay
+/soc/qcom,rimps@17400000	qcom,rimps	0x17400000 0x10 0x17d90000 0x2000	okay
+/soc/qcom,scmi	arm,scmi		okay
+/soc/qcom,rimps_log@17d09c00	qcom,rimps-log	0x17d09c00 0x200 0x17d09e00 0x200	okay
+/soc/qcom,ipcc@ed18000	qcom,ipcc	0xed18000 0x1000	okay
+/soc/remoteproc-adsp@03000000	qcom,cape-adsp-pas	0x3000000 0x10000	okay
+/soc/remoteproc-adsp@03000000/glink-edge/qcom,msm_fastrpc_rpmsg	qcom,msm-fastrpc-rpmsg		okay
+/soc/remoteproc-adsp@03000000/glink-edge/qcom,gpr	qcom,gpr	0x02	okay
+/soc/remoteproc-adsp@03000000/glink-edge/qcom,gpr/spf_core	qcom,spf_core	0x03	okay
+/soc/remoteproc-adsp@03000000/glink-edge/qcom,gpr/audio-pkt	qcom,audio-pkt	0x17	okay
+/soc/remoteproc-adsp@03000000/glink-edge/qcom,gpr/q6prm	qcom,audio_prm	0x07	okay
+/soc/remoteproc-cdsp@32300000	qcom,cape-cdsp-pas	0x32300000 0x10000	okay
+/soc/remoteproc-cdsp@32300000/glink-edge/qcom,msm_fastrpc_rpmsg	qcom,msm-fastrpc-rpmsg		okay
+/soc/remoteproc-cdsp@32300000/glink-edge/qcom,msm_cdsprm_rpmsg	qcom,msm-cdsprm-rpmsg		okay
+/soc/remoteproc-cdsp@32300000/glink-edge/qcom,msm_cdsprm_rpmsg/qcom,msm_cdsp_rm	qcom,msm-cdsp-rm		okay
+/soc/remoteproc-mss@04080000	qcom,cape-modem-pas	0x4080000 0x10000	okay
+/soc/remoteproc-spss@1880000	qcom,cape-spss-pas	0x188101c 0x04 0x1881024 0x04 0x1881028 0x04 0x188103c 0x04 0x1881100 0x04 0x1882014 0x04	okay
+/soc/qcom,spcom	qcom,spcom		okay
+/soc/qcom,spss_utils	qcom,spss-utils		okay
+/soc/qcom,rmtfs_sharedmem@0	qcom,sharedmem-uio	0x00 0x300000	okay
+/soc/sdhc2-opp-table	operating-points-v2		okay
+/soc/sdhci@8804000	qcom,sdhci-msm-v5	0x8804000 0x1000	disabled
+/soc/qcom,sps	qcom,msm-sps-4k		okay
+/soc/qcom,qsee_ipc_irq_bridge	qcom,qsee-ipc-irq-bridge		okay
+/soc/ufsphy_mem@1d80000	qcom,ufs-phy-qmp-v4-cape	0x1d80000 0x2000	okay
+/soc/ufshc@1d84000	qcom,ufshc	0x1d84000 0x3000 0x1d88000 0x8000 0x1d90000 0x9000	okay
+/soc/interconnect@0	qcom,waipio-clk_virt		okay
+/soc/interconnect@1	qcom,waipio-mc_virt		okay
+/soc/interconnect@1500000	qcom,waipio-config_noc	0x1500000 0x1c000	okay
+/soc/interconnect@1680000	qcom,waipio-system_noc	0x1680000 0x1e200	okay
+/soc/interconnect@16c0000	qcom,waipio-pcie_anoc	0x16c0000 0xe280	okay
+/soc/interconnect@16e0000	qcom,waipio-aggre1_noc	0x16e0000 0x1c080	okay
+/soc/interconnect@1700000	qcom,waipio-aggre2_noc	0x1700000 0x31080	okay
+/soc/interconnect@1740000	qcom,waipio-mmss_noc	0x1740000 0x1f080	okay
+/soc/interconnect@19100000	qcom,waipio-gem_noc	0x19100000 0xbb800	okay
+/soc/interconnect@320C0000	qcom,waipio-nsp_noc	0x320c0000 0x10000	okay
+/soc/interconnect@3c40000	qcom,waipio-lpass_ag_noc	0x3c40000 0x17200	okay
+/soc/qcom,msm-eud@88e0000	qcom,msm-eud	0x88e0000 0x2000 0x88e2000 0x1000	okay
+/soc/mini_dump_node	qcom,minidump		okay
+/soc/va_mini_dump	qcom,va-minidump		okay
+/soc/qcom,cpu-vendor-hooks	qcom,cpu-vendor-hooks		okay
+/soc/qcom,logbuf-vendor-hooks	qcom,logbuf-vendor-hooks		okay
+/soc/cpu-pmu	arm,armv8-pmuv3		okay
+/soc/qcom,msm-rtb	qcom,msm-rtb		okay
+/soc/qcom,mpm2-sleep-counter@c221000	qcom,mpm2-sleep-counter	0xc221000 0x1000	okay
+/soc/qcom,msm-imem@146aa000	qcom,msm-imem	0x146aa000 0x1000	okay
+/soc/qcom,msm-imem@146aa000/mem_dump_table@10	qcom,msm-imem-mem_dump_table	0x10 0x08	okay
+/soc/qcom,msm-imem@146aa000/restart_reason@65c	qcom,msm-imem-restart_reason	0x65c 0x04	okay
+/soc/qcom,msm-imem@146aa000/dload_type@1c	qcom,msm-imem-dload-type	0x1c 0x04	okay
+/soc/qcom,msm-imem@146aa000/boot_stats@6b0	qcom,msm-imem-boot_stats	0x6b0 0x20	okay
+/soc/qcom,msm-imem@146aa000/kaslr_offset@6d0	qcom,msm-imem-kaslr_offset	0x6d0 0x0c	okay
+/soc/qcom,msm-imem@146aa000/pil@94c	qcom,pil-reloc-info	0x94c 0xc8	okay
+/soc/qcom,msm-imem@146aa000/pil@6dc	qcom,msm-imem-pil-disable-timeout	0x6dc 0x04	okay
+/soc/qcom,msm-imem@146aa000/diag_dload@c8	qcom,msm-imem-diag-dload	0xc8 0xc8	okay
+/soc/qcom,chd	qcom,core-hang-detect		okay
+/soc/dload_mode	qcom,dload-mode		okay
+/soc/microdump_modem	qcom,microdump_modem		okay
+/soc/syscon@1fc0000	syscon	0x1fc0000 0x30000	okay
+/soc/syscon@1f40000	syscon	0x1f40000 0x20000	okay
+/soc/hwlock	qcom,tcsr-mutex		okay
+/soc/qcom,smem	qcom,smem		okay
+/soc/qcom,smp2p-adsp	qcom,smp2p		okay
+/soc/qcom,smp2p-dsps	qcom,smp2p		okay
+/soc/qcom,smp2p-cdsp	qcom,smp2p		okay
+/soc/qcom,smp2p-modem	qcom,smp2p		okay
+/soc/qcom,smp2p_sleepstate	qcom,smp2p-sleepstate		okay
+/soc/qcom,glinkpkt	qcom,glinkpkt		okay
+/soc/qcom,glink	qcom,glink		okay
+/soc/power-controller@c300000	qcom,waipio-aoss-qmp	0xc300000 0x400	okay
+/soc/qcom,qmp-aop	qcom,qmp-mbox		okay
+/soc/qcom,qmp-tme	qcom,qmp-mbox		okay
+/soc/qcom,tmecom-qmp-client	qcom,tmecom-qmp-client		okay
+/soc/remoteproc-slpi@02400000	qcom,waipio-slpi-pas	0x2400000 0x10000	okay
+/soc/remoteproc-slpi@02400000/glink-edge/qcom,msm_fastrpc_rpmsg	qcom,msm-fastrpc-rpmsg		okay
+/soc/qcom,msm-ssc-sensors	qcom,msm-ssc-sensors		okay
+/soc/qcom,msm_gsi	qcom,msm_gsi		okay
+/soc/qcom,rmnet-ipa	qcom,rmnet-ipa3		okay
+/soc/qcom,ipa_fws	qcom,pil-tz-generic		disabled
+/soc/qcom,ipa@3e00000	qcom,ipa	0x3e00000 0x84000 0x3e04000 0xfc000	okay
+/soc/qcom,ipa@3e00000/qcom,smp2p_map_ipa_1_out	qcom,smp2p-map-ipa-1-out		okay
+/soc/qcom,ipa@3e00000/qcom,smp2p_map_ipa_1_in	qcom,smp2p-map-ipa-1-in		okay
+/soc/qcom,ipa@3e00000/ipa_smmu_ap	qcom,ipa-smmu-ap-cb		okay
+/soc/qcom,ipa@3e00000/ipa_smmu_wlan	qcom,ipa-smmu-wlan-cb		okay
+/soc/qcom,ipa@3e00000/ipa_smmu_uc	qcom,ipa-smmu-uc-cb		okay
+/soc/qcom,ipa@3e00000/ipa_smmu_11ad	qcom,ipa-smmu-11ad-cb		okay
+/soc/qcom,gh_vm_loader_sec@e0b00000	qcom,gh-vm-loader-sec		okay
+/soc/qcom,gh_vm_loader_sec@e0600000	qcom,gh-vm-loader-sec		okay
+/soc/tlmm-vm-mem-access	qcom,tlmm-vm-mem-access		okay
+/soc/qcom,guestvm_loader@e0b00000	qcom,guestvm-loader		okay
+/soc/qcom,guestvm_loader@e0600000	qcom,guestvm-loader		okay
+/soc/cache-controller@19200000	qcom,cape-llcc qcom,llcc-v21	0x19200000 0x580000 0x19a00000 0x80000	okay
+/soc/cache-controller@19200000/llcc-perfmon	qcom,llcc-perfmon		okay
+/soc/qcom,memshare	qcom,memshare		okay
+/soc/qcom,memshare/qcom,client_1	qcom,memshare-peripheral		okay
+/soc/qcom,memshare/qcom,client_2	qcom,memshare-peripheral		okay
+/soc/qcom,memshare/qcom,client_3	qcom,memshare-peripheral		okay
+/soc/mhi_qrtr_cnss	qcom,qrtr-mhi		okay
+/soc/qcom,msm-cdsp-loader	qcom,cdsp-loader		okay
+/soc/qcom,msm-adsprpc-mem	qcom,msm-adsprpc-mem-region		okay
+/soc/qcom,msm_fastrpc	qcom,msm-fastrpc-compute		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb1	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb2	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb3	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb4	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb5	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb6	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb7	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb8	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb9	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb10	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb11	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb12	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb13	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb14	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb15	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb16	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb17	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb18	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,msm_fastrpc/qcom,msm_fastrpc_compute_cb19	qcom,msm-fastrpc-compute-cb		okay
+/soc/qcom,cnss-qca6490@b0000000	qcom,cnss-qca6490	0xb0000000 0x10000	okay
+/soc/qcom,hyp-core-ctl	qcom,hyp-core-ctl		okay
+/soc/vivo,fuse_info	vivo,fuse-info		okay
+/soc/qcom,qupv3_0_geni_se@9c0000	qcom,qupv3-geni-se	0x9c0000 0x2000	okay
+/soc/qcom,gpi-dma@900000	qcom,gpi-dma	0x900000 0x60000	okay
+/soc/qcom,qup_uart@99c000	qcom,msm-geni-console	0x99c000 0x4000	okay
+/soc/qcom,qup_uart@980000	qcom,msm-geni-serial-hs	0x980000 0x4000	disabled
+/soc/i2c@980000	qcom,i2c-geni	0x980000 0x4000	disabled
+/soc/spi@980000	qcom,spi-geni	0x980000 0x4000	okay
+/soc/spi@980000/irled_spi_38k@01	qcom_irled_spi	0x00	okay
+/soc/i2c@984000	qcom,i2c-geni	0x984000 0x4000	okay
+/soc/i2c@984000/cs_press@50	cs_press_pt100,f61	0x50	okay
+/soc/i2c@984000/cs_aw8680x_press@5c	awinic,cs_aw8680x_press	0x5c	okay
+/soc/spi@984000	qcom,spi-geni	0x984000 0x4000	disabled
+/soc/i2c@988000	qcom,i2c-geni	0x988000 0x4000	okay
+/soc/i2c@988000/stm32l011@50	st,st32l011-hv-dual-battery	0x50	okay
+/soc/spi@988000	qcom,spi-geni	0x988000 0x4000	disabled
+/soc/i2c@98c000	qcom,i2c-geni	0x98c000 0x4000	okay
+/soc/i2c@98c000/tfa9874@34	nxp,tfa9874	0x34	disabled
+/soc/i2c@98c000/tfa9874@36	nxp,tfa9874	0x36	disabled
+/soc/i2c@98c000/aw88263@34	awinic,aw882xx_v3_smartpa_l	0x34	okay
+/soc/i2c@98c000/aw88263@35	awinic,aw882xx_v3_smartpa_r	0x35	okay
+/soc/i2c@98c000/hifi@10	akm,ak4377a	0x10	disabled
+/soc/spi@98c000	qcom,spi-geni	0x98c000 0x4000	disabled
+/soc/i2c@990000	qcom,i2c-geni	0x990000 0x4000	okay
+/soc/i2c@990000/gt9916@5d	goodix,gt9897	0x5d	okay
+/soc/i2c@990000/sec_ts@48	samsung,y761	0x48	okay
+/soc/i2c@990000/tcm_i2c@2c	synaptics, synaptics-3618	0x2c	okay
+/soc/spi@990000	qcom,spi-geni	0x990000 0x4000	disabled
+/soc/i2c@994000	qcom,i2c-geni	0x994000 0x4000	okay
+/soc/i2c@994000/nq@64	rtc6226	0x64	okay
+/soc/i2c@994000/fsa4480@42	qcom,fsa4480-i2c	0x42	disabled
+/soc/i2c@994000/redriver@1c	onnn,redriver	0x1c	okay
+/soc/i2c@994000/eusb2_repeater@4f	nxp,eusb2-repeater	0x4f	okay
+/soc/i2c@994000/eusb2_repeater@3e	ti,eusb2-repeater	0x3e	okay
+/soc/i2c@994000/pm8008i@8	qcom,i2c-pmic	0x08	okay
+/soc/i2c@994000/pm8008i@8/pm8008-chip@900	qcom,pm8008-chip	0x900	okay
+/soc/i2c@994000/pm8008i@8/qcom,revid@100	qcom,qpnp-revid	0x100	okay
+/soc/i2c@994000/pm8008i@9	qcom,i2c-pmic	0x09	okay
+/soc/i2c@994000/pm8008i@9/qcom,pm8008i-regulator	qcom,pm8008-regulator		okay
+/soc/i2c@994000/pm8008j@c	qcom,i2c-pmic	0x0c	okay
+/soc/i2c@994000/pm8008j@c/pm8008-chip@900	qcom,pm8008-chip	0x900	okay
+/soc/i2c@994000/pm8008j@c/qcom,revid@100	qcom,qpnp-revid	0x100	okay
+/soc/i2c@994000/pm8008j@d	qcom,i2c-pmic	0x0d	okay
+/soc/i2c@994000/pm8008j@d/qcom,pm8008j-regulator	qcom,pm8008-regulator		okay
+/soc/i2c@994000/max20328@42	qcom,max20328-i2c	0x42	okay
+/soc/spi@994000	qcom,spi-geni	0x994000 0x4000	disabled
+/soc/i2c@998000	qcom,i2c-geni	0x998000 0x4000	disabled
+/soc/spi@998000	qcom,spi-geni	0x998000 0x4000	disabled
+/soc/qcom,qupv3_1_geni_se@ac0000	qcom,qupv3-geni-se	0xac0000 0x2000	okay
+/soc/qcom,gpi-dma@a00000	qcom,gpi-dma	0xa00000 0x60000	okay
+/soc/i2c@a80000	qcom,i2c-geni	0xa80000 0x4000	disabled
+/soc/spi@a80000	qcom,spi-geni	0xa80000 0x4000	disabled
+/soc/i2c@a84000	qcom,i2c-geni	0xa84000 0x4000	okay
+/soc/i2c@a84000/nq@28	qcom,sn-nci	0x28	okay
+/soc/i2c@a84000/fan53526_i2c@60	fan53526_i2c	0x60	okay
+/soc/spi@a84000	qcom,spi-geni	0xa84000 0x4000	disabled
+/soc/i2c@a88000	qcom,i2c-geni	0xa88000 0x4000	disabled
+/soc/spi@a88000	qcom,spi-geni	0xa88000 0x4000	disabled
+/soc/i2c@a8c000	qcom,i2c-geni	0xa8c000 0x4000	disabled
+/soc/spi@a8c000	qcom,spi-geni	0xa8c000 0x4000	disabled
+/soc/i2c@a90000	qcom,i2c-geni	0xa90000 0x4000	disabled
+/soc/spi@a90000	qcom,spi-geni	0xa90000 0x4000	disabled
+/soc/i2c@a94000	qcom,i2c-geni	0xa94000 0x4000	okay
+/soc/i2c@a94000/battery@55	ti,bq28z610-db	0x55	okay
+/soc/spi@a94000	qcom,spi-geni	0xa94000 0x4000	disabled
+/soc/qcom,qup_uart@a98000	qcom,msm-geni-serial-hs	0xa98000 0x4000	okay
+/soc/i2c@a98000	qcom,i2c-geni	0xa98000 0x4000	disabled
+/soc/spi@a98000	qcom,spi-geni	0xa98000 0x4000	disabled
+/soc/qcom,qupv3_2_geni_se@8c0000	qcom,qupv3-geni-se	0x8c0000 0x2000	okay
+/soc/qcom,gpi-dma@800000	qcom,gpi-dma	0x800000 0x60000	okay
+/soc/i2c@880000	qcom,i2c-geni	0x880000 0x4000	okay
+/soc/spi@880000	qcom,spi-geni	0x880000 0x4000	disabled
+/soc/i3c-master@880000	qcom,geni-i3c	0x880000 0x4000 0xecb0000 0x10000	disabled
+/soc/i3c-master@a84000	qcom,geni-i3c	0xa84000 0x4000 0xeca0000 0x10000	disabled
+/soc/i2c@884000	qcom,i2c-geni	0x884000 0x4000	disabled
+/soc/spi@884000	qcom,spi-geni	0x884000 0x4000	disabled
+/soc/i2c@888000	qcom,i2c-geni	0x888000 0x4000	disabled
+/soc/spi@888000	qcom,spi-geni	0x888000 0x4000	disabled
+/soc/i2c@88c000	qcom,i2c-geni	0x88c000 0x4000	okay
+/soc/i2c@88c000/aw8697_haptic@5A	awinic,aw86927_haptic	0x5a	okay
+/soc/spi@88c000	qcom,spi-geni	0x88c000 0x4000	disabled
+/soc/i2c@890000	qcom,i2c-geni	0x890000 0x4000	disabled
+/soc/spi@890000	qcom,spi-geni	0x890000 0x4000	okay
+/soc/spi@890000/nvt	novatek,vis-display	0x00	okay
+/soc/spi@890000/nvt/qcom,cam-sensor5	qcom,cam-sensor		okay
+/soc/i2c@894000	qcom,i2c-geni	0x894000 0x4000	disabled
+/soc/spi@894000	qcom,spi-geni	0x894000 0x4000	disabled
+/soc/i2c@898000	qcom,i2c-geni	0x898000 0x4000	disabled
+/soc/spi@898000	qcom,spi-geni	0x898000 0x4000	disabled
+/soc/qcom,qup_uart@894000	qcom,msm-geni-serial-hs	0x894000 0x4000	okay
+/soc/ssc_etm0	qcom,coresight-remote-etm		okay
+/soc/audio_etm0	qcom,coresight-remote-etm		okay
+/soc/tpdm_lpass_lpi	qcom,coresight-dummy		okay
+/soc/lpass_stm	qcom,coresight-dummy		okay
+/soc/sensor_stm	qcom,coresight-dummy		okay
+/soc/tpdm@10b09000	arm,primecell	0x10b09000 0x1000	okay
+/soc/tpdm@10b0a000	arm,primecell	0x10b0a000 0x1000	okay
+/soc/tpdm@10b0b000	arm,primecell	0x10b0b000 0x1000	okay
+/soc/tpdm@10b0c000	arm,primecell	0x10b0c000 0x1000	okay
+/soc/tpdm@10844000	arm,primecell	0x10844000 0x1000	okay
+/soc/tpdm@10d20000	arm,primecell	0x10d20000 0x1000	okay
+/soc/tpdm@10d30000	arm,primecell	0x10d30000 0x1000	okay
+/soc/tpdm@10d00000	arm,primecell	0x10d00000 0x1000	disabled
+/soc/tpdm@10d01000	arm,primecell	0x10d01000 0x1000	disabled
+/soc/tpdm@10830000	arm,primecell	0x10830000 0x1000	okay
+/soc/tpdm@10c60000	arm,primecell	0x10c60000 0x1000	okay
+/soc/tpdm@10c08000	arm,primecell	0x10c08000 0x1000	okay
+/soc/tpdm@10c38000	arm,primecell	0x10c38000 0x1000	okay
+/soc/tpdm@10c39000	arm,primecell	0x10c39000 0x1000	okay
+/soc/tpdm@10980000	arm,primecell	0x10980000 0x1000	okay
+/soc/tpdm_turing_llm	qcom,coresight-dummy		okay
+/soc/tpdm@10900000	arm,primecell	0x10900000 0x1000	disabled
+/soc/tpdm@10841000	arm,primecell	0x10841000 0x1000	okay
+/soc/tpdm@109d0000	arm,primecell	0x109d0000 0x1000	okay
+/soc/tpdm@1082c000	arm,primecell	0x1082c000 0x1000	okay
+/soc/tpdm@10840000	arm,primecell	0x10840000 0x1000	disabled
+/soc/tpdm@10c22000	arm,primecell	0x10c22000 0x1000	disabled
+/soc/tpdm@10850000	arm,primecell	0x10850000 0x1000	okay
+/soc/tpdm@10c28000	arm,primecell	0x10c28000 0x1000	okay
+/soc/tpdm@10c29000	arm,primecell	0x10c29000 0x1000	okay
+/soc/tpdm@10b0d000	arm,primecell	0x10b0d000 0x1000	okay
+/soc/snoc	qcom,coresight-dummy		okay
+/soc/tpdm@1000f000	arm,primecell	0x1000f000 0x1000	okay
+/soc/stm@10002000	arm,primecell	0x10002000 0x1000 0x16280000 0x180000	okay
+/soc/tpdm@10003000	arm,primecell	0x10003000 0x1000	okay
+/soc/turing_etm0	qcom,coresight-remote-etm		okay
+/soc/tpdm@10880000	arm,primecell	0x10880000 0x1000	disabled
+/soc/tpda@10882000	arm,primecell	0x10882000 0x1000	disabled
+/soc/tpdm@109c0000	arm,primecell	0x109c0000 0x1000	okay
+/soc/tpdm@10ac0000	arm,primecell	0x10ac0000 0x1000	okay
+/soc/tpdm@138a0000	arm,primecell	0x138a0000 0x1000	okay
+/soc/tpdm@138b0000	arm,primecell	0x138b0000 0x1000	okay
+/soc/tpdm@138c0000	arm,primecell	0x138c0000 0x1000	okay
+/soc/tpdm@13860000	arm,primecell	0x13860000 0x1000	okay
+/soc/tpdm@13861000	arm,primecell	0x13861000 0x1000	okay
+/soc/tpdm@10800000	arm,primecell	0x10800000 0x1000	okay
+/soc/tpdm@10801000	arm,primecell	0x10801000 0x1000	disabled
+/soc/modem_etm0	qcom,coresight-remote-etm		okay
+/soc/modem2_etm0	qcom,coresight-remote-etm		okay
+/soc/modem_diag	qcom,coresight-dummy		okay
+/soc/tpdm@10c21000	arm,primecell	0x10c21000 0x1000	disabled
+/soc/tpdm@10c20000	arm,primecell	0x10c20000 0x1000	disabled
+/soc/tpdm@10cc9000	arm,primecell	0x10cc9000 0x1000	disabled
+/soc/tpdm@10cc1000	arm,primecell	0x10cc1000 0x1000	disabled
+/soc/tpdm@10cc0000	arm,primecell	0x10cc0000 0x1000	disabled
+/soc/funnel@10b24000	arm,coresight-static-funnel		okay
+/soc/funnel@10b44000	arm,coresight-static-funnel		okay
+/soc/funnel@10902000	arm,primecell	0x10902000 0x1000	disabled
+/soc/funnel@10832000	arm,primecell	0x10832000 0x1000	okay
+/soc/funnel@10c0b000	arm,primecell	0x10c0b000 0x1000	okay
+/soc/funnel@10846000	arm,primecell	0x10846000 0x1000	okay
+/soc/funnel@10d22000	arm,primecell	0x10d22000 0x1000	okay
+/soc/funnel@10d32000	arm,primecell	0x10d32000 0x1000	okay
+/soc/gladiator	qcom,coresight-dummy		okay
+/soc/funnel@10d0f000	arm,primecell	0x10d0f000 0x1000	okay
+/soc/funnel@10d05000	arm,primecell	0x10d05000 0x1000	okay
+/soc/funnel@10986000	arm,primecell	0x10986000 0x1000 0x10985000 0x1000	okay
+/soc/funnel@10985000	arm,primecell	0x10985000 0x1000	okay
+/soc/funnel@10883000	arm,primecell	0x10883000 0x1000	disabled
+/soc/funnel@10c3a000	arm,primecell	0x10c3a000 0x1000	okay
+/soc/tpda@109c1000	arm,primecell	0x109c1000 0x1000	okay
+/soc/funnel@109c2000	arm,primecell	0x109c2000 0x1000	okay
+/soc/tpda@10cc7000	arm,primecell	0x10cc7000 0x1000	disabled
+/soc/funnel@10cc8000	arm,primecell	0x10cc8000 0x1000	disabled
+/soc/tpda@10ac1000	arm,primecell	0x10ac1000 0x1000	okay
+/soc/funnel@10ac2000	arm,primecell	0x10ac2000 0x1000	okay
+/soc/tpda@10803000	arm,primecell	0x10803000 0x1000	okay
+/soc/funnel@1080d000	arm,primecell	0x1080d000 0x1000 0x1080c000 0x1000	okay
+/soc/funnel@1080c000	arm,primecell	0x1080c000 0x1000	okay
+/soc/funnel@10804000	arm,primecell	0x10804000 0x1000	okay
+/soc/tpda@13863000	arm,primecell	0x13863000 0x1000	okay
+/soc/funnel@13810000	arm,primecell	0x13810000 0x1000	okay
+/soc/tpda@10c2e000	arm,primecell	0x10c2e000 0x1000	okay
+/soc/funnel@10c2f000	arm,primecell	0x10c2f000 0x1000	okay
+/soc/tpda@10004000	arm,primecell	0x10004000 0x1000	okay
+/soc/funnel@10041000	arm,primecell	0x10041000 0x1000	okay
+/soc/funnel@10042000	arm,primecell	0x10042000 0x1000	okay
+/soc/funnel@10045000	arm,primecell	0x10045000 0x1000	okay
+/soc/tpda@10b08000	arm,primecell	0x10b08000 0x1000	okay
+/soc/funnel@10b04000	arm,primecell	0x10b04000 0x1000	okay
+/soc/dummy_sink	qcom,coresight-dummy		okay
+/soc/tmc@10b05000	arm,primecell	0x10b05000 0x1000	okay
+/soc/replicator@10b06000	arm,primecell	0x10b06000 0x1000	okay
+/soc/replicator@10046000	arm,primecell	0x10046000 0x1000	okay
+/soc/replicator@1004e000	arm,primecell	0x1004e000 0x1000	okay
+/soc/tmc@10048000	arm,primecell	0x10048000 0x1000 0x10064000 0x16000	okay
+/soc/tmc@1004f000	arm,primecell	0x1004f000 0x1000	okay
+/soc/csr@10001000	qcom,coresight-csr	0x10001000 0x1000	okay
+/soc/csr@10b11000	qcom,coresight-csr	0x10b11000 0x1000 0x10b110f8 0x50	okay
+/soc/cti@10010000	arm,coresight-cti arm,primecell	0x10010000 0x1000	okay
+/soc/cti@10c2a000	arm,coresight-cti arm,primecell	0x10c2a000 0x1000	okay
+/soc/cti@10c2b000	arm,coresight-cti arm,primecell	0x10c2b000 0x1000	okay
+/soc/cti@10c09000	arm,coresight-cti arm,primecell	0x10c09000 0x1000	okay
+/soc/cti@10c0a000	arm,coresight-cti arm,primecell	0x10c0a000 0x1000	okay
+/soc/cti@10d02000	arm,coresight-cti arm,primecell	0x10d02000 0x1000	okay
+/soc/cti@10d03000	arm,coresight-cti arm,primecell	0x10d03000 0x1000	okay
+/soc/cti@10d04000	arm,coresight-cti arm,primecell	0x10d04000 0x1000	okay
+/soc/cti@10d0c000	arm,coresight-cti arm,primecell	0x10d0c000 0x1000	okay
+/soc/cti@10d0d000	arm,coresight-cti arm,primecell	0x10d0d000 0x1000	okay
+/soc/cti@10d0e000	arm,coresight-cti arm,primecell	0x10d0e000 0x1000	okay
+/soc/cti@10d21000	arm,coresight-cti arm,primecell	0x10d21000 0x1000	okay
+/soc/cti@10d31000	arm,coresight-cti arm,primecell	0x10d31000 0x1000	okay
+/soc/cti@10845000	arm,coresight-cti arm,primecell	0x10845000 0x1000	okay
+/soc/cti@10961000	arm,coresight-cti arm,primecell	0x10961000 0x1000	disabled
+/soc/cti@10962000	arm,coresight-cti arm,primecell	0x10962000 0x1000	disabled
+/soc/cti@10831000	arm,coresight-cti arm,primecell	0x10831000 0x1000	okay
+/soc/cti@10c61000	arm,coresight-cti arm,primecell	0x10c61000 0x1000	okay
+/soc/cti@10982000	arm,coresight-cti arm,primecell	0x10982000 0x1000	okay
+/soc/cti@10984000	arm,coresight-cti arm,primecell	0x10984000 0x1000	okay
+/soc/cti@1098b000	arm,coresight-cti arm,primecell	0x1098b000 0x1000	okay
+/soc/cti@10b00000	arm,coresight-cti arm,primecell	0x10b00000 0x1000	okay
+/soc/cti@10b2e000	arm,coresight-cti arm,primecell	0x10b2e000 0x1000	disabled
+/soc/cti@10b2b000	arm,coresight-cti arm,primecell	0x10b2b000 0x1000	disabled
+/soc/cti@10b21000	arm,coresight-cti arm,primecell	0x10b21000 0x1000	disabled
+/soc/cti@10b20000	arm,coresight-cti arm,primecell	0x10b20000 0x1000	disabled
+/soc/cti@10b13000	arm,coresight-cti arm,primecell	0x10b13000 0x1000	disabled
+/soc/cti@10b41000	arm,coresight-cti arm,primecell	0x10b41000 0x1000	disabled
+/soc/cti@10b4b000	arm,coresight-cti arm,primecell	0x10b4b000 0x1000	disabled
+/soc/cti@138e0000	arm,coresight-cti arm,primecell	0x138e0000 0x1000	okay
+/soc/cti@138f0000	arm,coresight-cti arm,primecell	0x138f0000 0x1000	okay
+/soc/cti@13900000	arm,coresight-cti arm,primecell	0x13900000 0x1000	okay
+/soc/cti@1382b000	arm,coresight-cti arm,primecell	0x1382b000 0x1000	disabled
+/soc/cti@1080b000	arm,coresight-cti arm,primecell	0x1080b000 0x1000	okay
+/soc/cti@10813000	arm,coresight-cti arm,primecell	0x10813000 0x1000	disabled
+/soc/cti@10cc2000	arm,coresight-cti arm,primecell	0x10cc2000 0x1000	disabled
+/soc/cti@10cc3000	arm,coresight-cti arm,primecell	0x10cc3000 0x1000	disabled
+/soc/cti@10cc4000	arm,coresight-cti arm,primecell	0x10cc4000 0x1000	disabled
+/soc/cti@10cc5000	arm,coresight-cti arm,primecell	0x10cc5000 0x1000	disabled
+/soc/cti@10cc6000	arm,coresight-cti arm,primecell	0x10cc6000 0x1000	disabled
+/soc/cti@10cd1000	arm,coresight-cti arm,primecell	0x10cd1000 0x1000	disabled
+/soc/cti@10802000	arm,coresight-cti arm,primecell	0x10802000 0x1000	okay
+/soc/cti@13862000	arm,coresight-cti arm,primecell	0x13862000 0x1000	okay
+/soc/cti@10d11000	arm,coresight-cti arm,primecell	0x10d11000 0x1000	disabled
+/soc/cti@10884000	arm,coresight-cti arm,primecell	0x10884000 0x1000	okay
+/soc/cti@10881000	arm,coresight-cti arm,primecell	0x10881000 0x1000	disabled
+/soc/cti@12010000	arm,coresight-cti arm,primecell	0x12010000 0x1000	okay
+/soc/cti@12020000	arm,coresight-cti arm,primecell	0x12020000 0x1000	okay
+/soc/cti@12030000	arm,coresight-cti arm,primecell	0x12030000 0x1000	okay
+/soc/cti@12040000	arm,coresight-cti arm,primecell	0x12040000 0x1000	okay
+/soc/cti@12050000	arm,coresight-cti arm,primecell	0x12050000 0x1000	okay
+/soc/cti@112060000	arm,coresight-cti arm,primecell	0x12060000 0x1000	okay
+/soc/cti@12070000	arm,coresight-cti arm,primecell	0x12070000 0x1000	okay
+/soc/cti@12080000	arm,coresight-cti arm,primecell	0x12080000 0x1000	okay
+/soc/tgu@10b0e000	arm,primecell	0x10b0e000 0x1000	okay
+/soc/ete0	arm,embedded-trace-extension		okay
+/soc/ete1	arm,embedded-trace-extension		okay
+/soc/ete2	arm,embedded-trace-extension		okay
+/soc/ete3	arm,embedded-trace-extension		okay
+/soc/ete4	arm,embedded-trace-extension		okay
+/soc/ete5	arm,embedded-trace-extension		okay
+/soc/ete6	arm,embedded-trace-extension		okay
+/soc/ete7	arm,embedded-trace-extension		okay
+/soc/funnel_ete	arm,coresight-static-funnel		okay
+/soc/dcc_v2@100ff000	qcom,dcc-v2	0x100ff000 0x1000 0x10080000 0x18000	okay
+/soc/mem_dump	qcom,mem-dump		okay
+/soc/kgsl-smmu@3da0000	qcom,qsmmu-v500 qcom,adreno-smmu	0x3da0000 0x40000 0x3de6000 0x20	okay
+/soc/kgsl-smmu@3da0000/gfx_0_tbu@3de9000	qcom,qsmmuv500-tbu	0x3de9000 0x1000 0x3de6200 0x08	okay
+/soc/kgsl-smmu@3da0000/gfx_1_tbu@3ded000	qcom,qsmmuv500-tbu	0x3ded000 0x1000 0x3de6208 0x08	okay
+/soc/apps-smmu@15000000	qcom,qsmmu-v500	0x15000000 0x100000 0x151ce000 0x20	okay
+/soc/apps-smmu@15000000/anoc_1_tbu@151d1000	qcom,qsmmuv500-tbu	0x151d1000 0x1000 0x151ce200 0x08	okay
+/soc/apps-smmu@15000000/anoc_2_tbu@151d5000	qcom,qsmmuv500-tbu	0x151d5000 0x1000 0x151ce208 0x08	okay
+/soc/apps-smmu@15000000/cam_0_tbu@151d9000	qcom,qsmmuv500-tbu	0x151d9000 0x1000 0x151ce210 0x08	okay
+/soc/apps-smmu@15000000/cam_1_tbu@151dd000	qcom,qsmmuv500-tbu	0x151dd000 0x1000 0x151ce218 0x08	okay
+/soc/apps-smmu@15000000/compute_1_tbu@151e1000	qcom,qsmmuv500-tbu	0x151e1000 0x1000 0x151ce220 0x08	okay
+/soc/apps-smmu@15000000/compute_0_tbu@151e5000	qcom,qsmmuv500-tbu	0x151e5000 0x1000 0x151ce228 0x08	okay
+/soc/apps-smmu@15000000/lpass_tbu@151e9000	qcom,qsmmuv500-tbu	0x151e9000 0x1000 0x151ce230 0x08	okay
+/soc/apps-smmu@15000000/pcie_tbu@151ed000	qcom,qsmmuv500-tbu	0x151ed000 0x1000 0x151ce238 0x08	disabled
+/soc/apps-smmu@15000000/sf_0_tbu@151f1000	qcom,qsmmuv500-tbu	0x151f1000 0x1000 0x151ce240 0x08	okay
+/soc/apps-smmu@15000000/sf_1_tbu@151f5000	qcom,qsmmuv500-tbu	0x151f5000 0x1000 0x151ce248 0x08	okay
+/soc/apps-smmu@15000000/mdp_0_tbu@151f9000	qcom,qsmmuv500-tbu	0x151f9000 0x1000 0x151ce250 0x08	okay
+/soc/apps-smmu@15000000/mdp_1_tbu@151fd000	qcom,qsmmuv500-tbu	0x151fd000 0x1000 0x151ce258 0x08	okay
+/soc/dma_dev@0x0	qcom,iommu-dma		okay
+/soc/iommu_test_device	qcom,iommu-debug-test		okay
+/soc/iommu_test_device/usecase0_apps	qcom,iommu-debug-usecase		okay
+/soc/iommu_test_device/usecase1_apps_fastmap	qcom,iommu-debug-usecase		okay
+/soc/iommu_test_device/usecase2_apps_atomic	qcom,iommu-debug-usecase		okay
+/soc/iommu_test_device/usecase3_apps_dma	qcom,iommu-debug-usecase		okay
+/soc/iommu_test_device/usecase4_apps_secure	qcom,iommu-debug-usecase		okay
+/soc/iommu_test_device/usecase5_kgsl	qcom,iommu-debug-usecase		okay
+/soc/iommu_test_device/usecase6_kgsl_dma	qcom,iommu-debug-usecase		okay
+/soc/qcom,dma-heaps	qcom,dma-heaps		okay
+/soc/qcom,kgsl-3d0@3d00000	qcom,adreno-gpu-gen7-4-0 qcom,kgsl-3d0	0x3d00000 0x40000 0x3d61000 0x800 0x3d50000 0x10000 0x3d8b000 0x2000 0x3d9e000 0x1000 0x10900000 0x80000 0x634000 0x1000	okay
+/soc/qcom,kgsl-3d0@3d00000/qcom,gpu-pwrlevels	qcom,gpu-pwrlevels		okay
+/soc/qcom,kgsl-3d0@3d00000/qcom,gpu-mempools	qcom,gpu-mempools		okay
+/soc/qcom,kgsl-iommu@3da0000	qcom,kgsl-smmu-v2	0x3da0000 0x40000	okay
+/soc/qcom,kgsl-iommu@3da0000/gfx3d_user	qcom,smmu-kgsl-cb		okay
+/soc/qcom,kgsl-iommu@3da0000/gfx3d_lpac	qcom,smmu-kgsl-cb		okay
+/soc/qcom,kgsl-iommu@3da0000/gfx3d_secure	qcom,smmu-kgsl-cb		okay
+/soc/qcom,gmu@3d69000	qcom,gen7-gmu	0x3d68000 0x37000 0xb290000 0x10000 0x3d40000 0x10000	okay
+/soc/thermal-sensor@c263000	qcom,tsens-v2	0xc263000 0x1ff 0xc222000 0x1ff	okay
+/soc/thermal-sensor@c265000	qcom,tsens-v2	0xc265000 0x1ff 0xc223000 0x1ff	okay
+/soc/qcom,cpu-pause	qcom,thermal-pause		okay
+/soc/qcom,cpu-hotplug	qcom,cpu-hotplug		okay
+/soc/qcom,cpu-voltage-cdev	qcom,cc-cooling-devices		okay
+/soc/qcom,ddr-cdev	qcom,ddr-cooling-device		okay
+/soc/qcom,limits-dcvs	qcom,msm-hw-limits		okay
+/soc/qmi-tmd-devices	qcom,qmi-cooling-devices		okay
+/soc/qmi-ts-sensors	qcom,qmi-sensors		okay
+/soc/qcom,cpufreq-cdev	qcom,cpufreq-cdev		okay
+/soc/qcom,devfreq-cdev	qcom,devfreq-cdev		okay
+/soc/qcom,userspace-cdev	qcom,userspace-cooling-devices		okay
+/soc/mx_sdpm@636000	qcom,sdpm	0x636000 0x1000	disabled
+/soc/mx_rdpm_pe@637000	qcom,policy-engine	0x637000 0x1000	disabled
+/soc/ssusb@a600000	qcom,dwc-usb3-msm	0xa600000 0x100000	okay
+/soc/ssusb@a600000/dwc3@a600000	snps,dwc3	0xa600000 0xd93c	okay
+/soc/vivo_usb	v,dwc3-vusb		okay
+/soc/hsphy@88e3000	qcom,usb-snps-eusb2-phy	0x88e3000 0x154 0x88e2000 0x04 0xc276000 0x04	okay
+/soc/usb_nop_phy	usb-nop-xceiv		okay
+/soc/ssphy@88e8000	qcom,usb-ssphy-qmp-dp-combo	0x88e8000 0x3000	disabled
+/soc/usb_audio_qmi_dev	qcom,usb-audio-qmi-dev		okay
+/soc/qcom,pcie@1c00000	qcom,pci-msm	0x1c00000 0x3000 0x1c06000 0x2000 0x60000000 0xf1d 0x60000f20 0xa8 0x60001000 0x1000 0x60100000 0x100000	okay
+/soc/qcom,pcie0_msi@0x17110040	qcom,pci-msi	0x17110040 0x00	disabled
+/soc/qcom,pcie@1c08000	qcom,pci-msm	0x1c08000 0x3000 0x1c0e000 0x2000 0x40000000 0xf1d 0x40000f20 0xa8 0x40001000 0x1000 0x40100000 0x100000	disabled
+/soc/qcom,pcie1_msi@0x17110040	qcom,pci-msi	0x17110040 0x00	disabled
+/soc/qcom,smp2p_interrupt_rdbg_2_out	qcom,smp2p-interrupt-rdbg-2-out		okay
+/soc/qcom,smp2p_interrupt_rdbg_2_in	qcom,smp2p-interrupt-rdbg-2-in		okay
+/soc/qcom,smp2p_interrupt_rdbg_5_out	qcom,smp2p-interrupt-rdbg-5-out		okay
+/soc/qcom,smp2p_interrupt_rdbg_5_in	qcom,smp2p-interrupt-rdbg-5-in		okay
+/soc/qcom,cvp@ab00000	qcom,msm-cvp qcom,waipio-cvp	0xab00000 0x100000	okay
+/soc/qcom,cvp@ab00000/cvp_cnoc	qcom,msm-cvp,bus		okay
+/soc/qcom,cvp@ab00000/cvp_bus_ddr	qcom,msm-cvp,bus		okay
+/soc/qcom,cvp@ab00000/cvp_non_secure_cb	qcom,msm-cvp,context-bank		okay
+/soc/qcom,cvp@ab00000/cvp_secure_nonpixel_cb	qcom,msm-cvp,context-bank		okay
+/soc/qcom,cvp@ab00000/cvp_secure_pixel_cb	qcom,msm-cvp,context-bank		okay
+/soc/qcom,cvp@ab00000/qcom,msm-cvp,mem_cdsp	qcom,msm-cvp,mem-cdsp		okay
+/soc/ipcc-self-ping-apss	qcom,ipcc-self-ping		okay
+/soc/ipcc-self-ping-cdsp	qcom,ipcc-self-ping		okay
+/soc/ipcc-self-ping-adsp	qcom,ipcc-self-ping		okay
+/soc/ipcc-self-ping-slpi	qcom,ipcc-self-ping		okay
+/soc/qcom,cam-req-mgr	qcom,cam-req-mgr		okay
+/soc/qcom,cam-sync	qcom,cam-sync		okay
+/soc/qcom,csiphy0@ace4000	qcom,csiphy-v2.1.3 qcom,csiphy	0xace4000 0x2000	okay
+/soc/qcom,csiphy1@ace6000	qcom,csiphy-v2.1.3 qcom,csiphy	0xace6000 0x2000	okay
+/soc/qcom,csiphy2@ace8000	qcom,csiphy-v2.1.3 qcom,csiphy	0xace8000 0x2000	okay
+/soc/qcom,csiphy3@acea000	qcom,csiphy-v2.1.3 qcom,csiphy	0xacea000 0x2000	okay
+/soc/qcom,csiphy4@acec000	qcom,csiphy-v2.1.3 qcom,csiphy	0xacec000 0x2000	okay
+/soc/qcom,csiphy5@acee000	qcom,csiphy-v2.1.3 qcom,csiphy	0xacee000 0x2000	okay
+/soc/qcom,cci0@ac15000	qcom,cci simple-bus	0xac15000 0x1000	okay
+/soc/qcom,cci0@ac15000/qcom,actuator0	qcom,actuator		okay
+/soc/qcom,cci0@ac15000/qcom,actuator1	qcom,actuator		okay
+/soc/qcom,cci0@ac15000/qcom,ois0	qcom,ois		okay
+/soc/qcom,cci0@ac15000/qcom,eeprom0	qcom,eeprom		okay
+/soc/qcom,cci0@ac15000/qcom,eeprom1	qcom,eeprom		okay
+/soc/qcom,cci0@ac15000/qcom,cam-sensor0	qcom,cam-sensor		okay
+/soc/qcom,cci0@ac15000/qcom,cam-sensor2	qcom,cam-sensor		okay
+/soc/qcom,cci1@ac16000	qcom,cci simple-bus	0xac16000 0x1000	okay
+/soc/qcom,cci1@ac16000/qcom,actuator3	qcom,actuator		okay
+/soc/qcom,cci1@ac16000/qcom,eeprom2	qcom,eeprom		okay
+/soc/qcom,cci1@ac16000/qcom,eeprom3	qcom,eeprom		okay
+/soc/qcom,cci1@ac16000/qcom,cam-sensor1	qcom,cam-sensor		okay
+/soc/qcom,cci1@ac16000/qcom,cam-sensor3	qcom,cam-sensor		okay
+/soc/qcom,cam_smmu	qcom,msm-cam-smmu simple-bus		okay
+/soc/qcom,cam_smmu/msm_cam_smmu_ife	qcom,msm-cam-smmu-cb		okay
+/soc/qcom,cam_smmu/msm_cam_smmu_jpeg	qcom,msm-cam-smmu-cb		okay
+/soc/qcom,cam_smmu/msm_cam_smmu_icp	qcom,msm-cam-smmu-cb		okay
+/soc/qcom,cam_smmu/msm_cam_smmu_cpas_cdm	qcom,msm-cam-smmu-cb		okay
+/soc/qcom,cam_smmu/msm_cam_smmu_secure	qcom,msm-cam-smmu-cb		okay
+/soc/qcom,cam-cpas@ac13000	qcom,cam-cpas	0xac13000 0x1000 0xac19000 0x9000 0xbbf0000 0x1f00	okay
+/soc/qcom,cam-cdm-intf	qcom,cam-cdm-intf		okay
+/soc/qcom,cpas-cdm0@ac24000	qcom,cam-cpas-cdm2_1	0xac24000 0x400	okay
+/soc/qcom,rt-cdm0@ac25000	qcom,cam-rt-cdm2_1	0xac25000 0x400	okay
+/soc/qcom,rt-cdm1@ac26000	qcom,cam-rt-cdm2_1	0xac26000 0x400	okay
+/soc/qcom,rt-cdm2@ac27000	qcom,cam-rt-cdm2_1	0xac27000 0x400	okay
+/soc/qcom,cam-isp	qcom,cam-isp		okay
+/soc/qcom,sfe0@ac9e000	qcom,sfe680	0xac9e000 0x8000	okay
+/soc/qcom,sfe1@aca6000	qcom,sfe680	0xaca6000 0x8000	okay
+/soc/qcom,csid0@acb7000	qcom,csid680_110	0xacb7000 0xd00 0xacb6000 0x1000	okay
+/soc/qcom,ife0@ac62000	qcom,vfe680_110	0xac62000 0xf000 0xac19000 0x9000	okay
+/soc/qcom,csid1@acb9000	qcom,csid680_110	0xacb9000 0xd00 0xacb6000 0x1000	okay
+/soc/qcom,ife1@ac71000	qcom,vfe680_110	0xac71000 0xf000 0xac19000 0x9000	okay
+/soc/qcom,csid2@acbb000	qcom,csid680_110	0xacbb000 0xd00 0xacb6000 0x1000	okay
+/soc/qcom,ife2@ac80000	qcom,vfe680_110	0xac80000 0xf000 0xac19000 0x9000	okay
+/soc/qcom,csid-lite0@acc6000	qcom,csid-lite680_110	0xacc6000 0xa00	okay
+/soc/qcom,ife-lite0@acc6000	qcom,vfe-lite680_110	0xacc6000 0x2800	okay
+/soc/qcom,csid-lite1@acca000	qcom,csid-lite680_110	0xacca000 0xa00	okay
+/soc/qcom,ife-lite1@acca000	qcom,vfe-lite680_110	0xacca000 0x2800	okay
+/soc/qcom,tpg13@acf6000	qcom,cam-tpg103	0xacf6000 0x400 0xac13000 0x1000	okay
+/soc/qcom,tpg14@acf7000	qcom,cam-tpg103	0xacf7000 0x400 0xac13000 0x1000	okay
+/soc/qcom,tpg15@acf8000	qcom,cam-tpg103	0xacf8000 0x400 0xac13000 0x1000	okay
+/soc/qcom,cam-icp	qcom,cam-icp		okay
+/soc/qcom,lx7	qcom,cam-lx7	0xac01000 0x400 0xac01800 0x400 0xac04000 0x1000	okay
+/soc/qcom,ipe0@ac42000	qcom,cam-ipe680	0xac42000 0x16000	okay
+/soc/qcom,bps@ac2c000	qcom,cam-bps680	0xac2c000 0x7800	okay
+/soc/qcom,cam-jpeg	qcom,cam-jpeg		okay
+/soc/qcom,jpegenc@ac2a000	qcom,cam_jpeg_enc_680	0xac2a000 0x1000 0xac19000 0x9000	okay
+/soc/qcom,jpegdma@ac2b000	qcom,cam_jpeg_dma_680	0xac2b000 0x1000 0xac19000 0x9000	okay
+/soc/qcom,vidc@aa00000	qcom,msm-vidc qcom,msm-vidc-waipio qcom,msm-vidc-iris2	0xaa00000 0xf0000	okay
+/soc/qcom,vidc@aa00000/non_secure_cb	qcom,msm-vidc,context-bank		okay
+/soc/qcom,vidc@aa00000/non_secure_pixel_cb	qcom,msm-vidc,context-bank		okay
+/soc/qcom,vidc@aa00000/secure_non_pixel_cb	qcom,msm-vidc,context-bank		okay
+/soc/qcom,vidc@aa00000/secure_bitstream_cb	qcom,msm-vidc,context-bank		okay
+/soc/qcom,vidc@aa00000/secure_pixel_cb	qcom,msm-vidc,context-bank		okay
+/soc/qcom,mdss_mdp@ae00000	qcom,sde-kms	0xae00000 0x84000 0xaeb0000 0x2008 0xaeac000 0x800	okay
+/soc/qcom,mdss_dsi_ctrl0@ae94000	qcom,dsi-ctrl-hw-v2.6	0xae94000 0x400 0xaf0f000 0x04 0xae36000 0x300	okay
+/soc/qcom,mdss_dsi_ctrl1@ae96000	qcom,dsi-ctrl-hw-v2.6	0xae96000 0x400 0xaf0f000 0x04 0xae37000 0x300	okay
+/soc/qcom,mdss_dsi_phy0@ae94900	qcom,dsi-phy-v4.3.2	0xae94400 0xa00 0xae94900 0x400 0xae94200 0xa0	okay
+/soc/qcom,mdss_dsi_phy1@ae96900	qcom,dsi-phy-v4.3.2	0xae96400 0xa00 0xae96900 0x400 0xae96200 0xa0	okay
+/soc/qcom,msm-ext-disp	qcom,msm-ext-disp		okay
+/soc/qcom,msm-ext-disp/qcom,msm-ext-disp-audio-codec-rx	qcom,msm-ext-disp-audio-codec-rx		okay
+/soc/qcom,msm_hdcp	qcom,msm-hdcp		okay
+/soc/qcom,dp_display@ae90000	qcom,dp-display	0xae90000 0xfc 0xae90200 0xc0 0xae90400 0x770 0xae91000 0x98 0x88eaa00 0x200 0x88ea200 0x200 0x88ea600 0x200 0xaf08000 0x1f4 0x88ea000 0x200 0x88e8000 0x20 0xaee1000 0x34 0xae91400 0x98 0xaf09000 0x14	okay
+/soc/qcom,sde_rscc@af20000	qcom,sde-rsc	0xaf20000 0x4d68 0xaf30000 0x3fd4	okay
+/soc/qcom,smmu_sde_unsec_cb	qcom,smmu_sde_unsec		okay
+/soc/qcom,smmu_sde_sec_cb	qcom,smmu_sde_sec		okay
+/soc/qcom,mmrm	qcom,msm-mmrm qcom,waipio-mmrm		okay
+/soc/qcom,msm-pcm	qcom,msm-pcm-dsp		okay
+/soc/qcom,msm-pcm-routing	qcom,msm-pcm-routing		okay
+/soc/qcom,msm-compr-dsp	qcom,msm-compr-dsp		okay
+/soc/qcom,msm-pcm-low-latency	qcom,msm-pcm-dsp		okay
+/soc/qcom,msm-ultra-low-latency	qcom,msm-pcm-dsp		okay
+/soc/qcom,msm-pcm-dsp-noirq	qcom,msm-pcm-dsp-noirq		okay
+/soc/qcom,msm-transcode-loopback	qcom,msm-transcode-loopback		okay
+/soc/qcom,msm-compress-dsp	qcom,msm-compress-dsp		okay
+/soc/qcom,msm-voip-dsp	qcom,msm-voip-dsp		okay
+/soc/qcom,msm-pcm-voice	qcom,msm-pcm-voice		okay
+/soc/qcom,msm-stub-codec	qcom,msm-stub-codec		okay
+/soc/qcom,msm-dai-fe	qcom,msm-dai-fe		okay
+/soc/qcom,msm-pcm-afe	qcom,msm-pcm-afe		okay
+/soc/qcom,msm-dai-q6-hdmi	qcom,msm-dai-q6-hdmi		okay
+/soc/qcom,msm-dai-q6-dp	qcom,msm-dai-q6-hdmi		okay
+/soc/qcom,msm-dai-q6-dp1	qcom,msm-dai-q6-hdmi		okay
+/soc/qcom,msm-pcm-loopback	qcom,msm-pcm-loopback		okay
+/soc/qcom,msm-pcm-loopback-low-latency	qcom,msm-pcm-loopback		okay
+/soc/qcom,msm-pcm-dtmf	qcom,msm-pcm-dtmf		okay
+/soc/qcom,msm-dai-mi2s	qcom,msm-dai-mi2s		okay
+/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-prim	qcom,msm-dai-q6-mi2s		okay
+/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-sec	qcom,msm-dai-q6-mi2s		okay
+/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-tert	qcom,msm-dai-q6-mi2s		okay
+/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-quat	qcom,msm-dai-q6-mi2s		okay
+/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-quin	qcom,msm-dai-q6-mi2s		okay
+/soc/qcom,msm-dai-mi2s/qcom,msm-dai-q6-mi2s-senary	qcom,msm-dai-q6-mi2s		okay
+/soc/qcom,msm-dai-cdc-dma	qcom,msm-dai-cdc-dma		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-0-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-0-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-1-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-1-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-wsa-cdc-dma-2-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-va-cdc-dma-0-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-va-cdc-dma-1-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-va-cdc-dma-2-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-0-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-1-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-2-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-3-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-4-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-5-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-6-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-rx-cdc-dma-7-rx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-0-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-1-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-2-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-3-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-4-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-dai-cdc-dma/qcom,msm-dai-tx-cdc-dma-5-tx	qcom,msm-dai-cdc-dma-dev		okay
+/soc/qcom,msm-lsm-client	qcom,msm-lsm-client		okay
+/soc/qcom,msm-dai-q6	qcom,msm-dai-q6		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-7-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-7-tx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-sb-8-tx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-bt-sco-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-bt-sco-tx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-int-fm-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-int-fm-tx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-be-afe-pcm-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-be-afe-pcm-tx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-afe-proxy-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-afe-proxy-tx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-incall-record-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-incall-record-tx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-incall-music-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-incall-music-2-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-afe-proxy-tx-1	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-proxy-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-proxy-tx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-usb-audio-rx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-dai-q6/qcom,msm-dai-q6-usb-audio-tx	qcom,msm-dai-q6-dev		okay
+/soc/qcom,msm-pcm-hostless	qcom,msm-pcm-hostless		okay
+/soc/qcom,audio-pkt-core-platform	qcom,audio-pkt-core-platform		okay
+/soc/qcom,msm-pri-auxpcm	qcom,msm-auxpcm-dev		okay
+/soc/qcom,msm-sec-auxpcm	qcom,msm-auxpcm-dev		okay
+/soc/qcom,msm-tert-auxpcm	qcom,msm-auxpcm-dev		okay
+/soc/qcom,msm-quat-auxpcm	qcom,msm-auxpcm-dev		okay
+/soc/qcom,msm-quin-auxpcm	qcom,msm-auxpcm-dev		okay
+/soc/qcom,msm-sen-auxpcm	qcom,msm-auxpcm-dev		okay
+/soc/qcom,msm-hdmi-dba-codec-rx	qcom,msm-hdmi-dba-codec-rx		okay
+/soc/qcom,msm-adsp-loader	qcom,adsp-loader		okay
+/soc/qcom,msm-adsp-notify	qcom,adsp-notify		okay
+/soc/qcom,msm-dai-tdm-pri-rx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-pri-rx/qcom,msm-dai-q6-tdm-pri-rx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-pri-tx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-pri-tx/qcom,msm-dai-q6-tdm-pri-tx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-sec-rx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-sec-rx/qcom,msm-dai-q6-tdm-sec-rx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-sec-tx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-sec-tx/qcom,msm-dai-q6-tdm-sec-tx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-tert-rx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-tert-rx/qcom,msm-dai-q6-tdm-tert-rx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-tert-tx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-tert-tx/qcom,msm-dai-q6-tdm-tert-tx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-quat-rx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-quat-rx/qcom,msm-dai-q6-tdm-quat-rx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-quat-tx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-quat-tx/qcom,msm-dai-q6-tdm-quat-tx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-quin-rx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-quin-rx/qcom,msm-dai-q6-tdm-quin-rx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-quin-tx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-quin-tx/qcom,msm-dai-q6-tdm-quin-tx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-sen-rx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-sen-rx/qcom,msm-dai-q6-tdm-sen-rx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-tdm-sen-tx	qcom,msm-dai-tdm		okay
+/soc/qcom,msm-dai-tdm-sen-tx/qcom,msm-dai-q6-tdm-sen-tx-0	qcom,msm-dai-q6-tdm		okay
+/soc/qcom,msm-dai-q6-spdif-pri-rx	qcom,msm-dai-q6-spdif		okay
+/soc/qcom,msm-dai-q6-spdif-pri-tx	qcom,msm-dai-q6-spdif		okay
+/soc/qcom,msm-dai-q6-spdif-sec-rx	qcom,msm-dai-q6-spdif		okay
+/soc/qcom,msm-dai-q6-spdif-sec-tx	qcom,msm-dai-q6-spdif		okay
+/soc/qcom,msm-dai-q6-afe-loopback-tx	qcom,msm-dai-q6-dev		okay
+/soc/spf_core_platform	qcom,spf-core-platform		okay
+/soc/spf_core_platform/qcom,msm-audio-ion	qcom,msm-audio-ion		okay
+/soc/spf_core_platform/qcom,msm-audio-ion-cma	qcom,msm-audio-ion-cma		okay
+/soc/spf_core_platform/lpi_pinctrl@3440000	qcom,lpi-pinctrl	0x3440000 0x00	okay
+/soc/spf_core_platform/lpass-cdc	qcom,lpass-cdc		okay
+/soc/spf_core_platform/lpass-cdc/lpass-cdc-clk-rsc-mngr	qcom,lpass-cdc-clk-rsc-mngr		okay
+/soc/spf_core_platform/lpass-cdc/va-macro@33F0000	qcom,lpass-cdc-va-macro	0x33f0000 0x00	okay
+/soc/spf_core_platform/lpass-cdc/va-macro@33F0000/va_swr_master	qcom,swr-mstr		okay
+/soc/spf_core_platform/lpass-cdc/va-macro@33F0000/va_swr_master/wcd938x-tx-slave	qcom,wcd938x-slave	0x0d 0x1170223	okay
+/soc/spf_core_platform/lpass-cdc/va-macro@33F0000/va_swr_master/dmic_swr@58350223	qcom,swr-dmic	0x08 0x58350223	disabled
+/soc/spf_core_platform/lpass-cdc/va-macro@33F0000/va_swr_master/dmic_swr@58350222	qcom,swr-dmic	0x08 0x58350222	disabled
+/soc/spf_core_platform/lpass-cdc/va-macro@33F0000/va_swr_master/dmic_swr@58350221	qcom,swr-dmic	0x08 0x58350221	disabled
+/soc/spf_core_platform/lpass-cdc/va-macro@33F0000/va_swr_master/dmic_swr@58350220	qcom,swr-dmic	0x08 0x58350220	disabled
+/soc/spf_core_platform/lpass-cdc/tx-macro@3220000	qcom,lpass-cdc-tx-macro	0x3220000 0x00	okay
+/soc/spf_core_platform/lpass-cdc/rx-macro@3200000	qcom,lpass-cdc-rx-macro	0x3200000 0x00	okay
+/soc/spf_core_platform/lpass-cdc/rx-macro@3200000/rx_swr_master	qcom,swr-mstr		okay
+/soc/spf_core_platform/lpass-cdc/rx-macro@3200000/rx_swr_master/swr_haptics@f0170220	qcom,pm8350b-swr-haptics	0x01 0xf0170220	okay
+/soc/spf_core_platform/lpass-cdc/rx-macro@3200000/rx_swr_master/wcd938x-rx-slave	qcom,wcd938x-slave	0x0d 0x1170224	okay
+/soc/spf_core_platform/lpass-cdc/wsa-macro@3240000	qcom,lpass-cdc-wsa-macro	0x3240000 0x00	disabled
+/soc/spf_core_platform/lpass-cdc/wsa-macro@3240000/wsa_swr_master	qcom,swr-mstr		okay
+/soc/spf_core_platform/lpass-cdc/wsa-macro@3240000/wsa_swr_master/wsa883x@02170221	qcom,wsa883x	0x02 0x2170221	okay
+/soc/spf_core_platform/lpass-cdc/wsa-macro@3240000/wsa_swr_master/wsa883x@02170222	qcom,wsa883x	0x02 0x2170222	okay
+/soc/spf_core_platform/lpass-cdc/wsa2-macro@31E0000	qcom,lpass-cdc-wsa2-macro	0x31e0000 0x00	disabled
+/soc/spf_core_platform/lpass-cdc/wsa2-macro@31E0000/wsa2_swr_master	qcom,swr-mstr		okay
+/soc/spf_core_platform/lpass-cdc/wsa2-macro@31E0000/wsa2_swr_master/wsa883x@02170221	qcom,wsa883x_2	0x02 0x2170221	okay
+/soc/spf_core_platform/lpass-cdc/wsa2-macro@31E0000/wsa2_swr_master/wsa883x@02170222	qcom,wsa883x_2	0x02 0x2170222	okay
+/soc/spf_core_platform/lpass-cdc/wcd938x-codec	qcom,wcd938x-codec		okay
+/soc/spf_core_platform/sound	qcom,waipio-asoc-snd		okay
+/soc/spf_core_platform/tert_mi2s_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/spf_core_platform/wsa_swr_clk_data_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/spf_core_platform/wsa2_swr_clk_data_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/spf_core_platform/rx_swr_clk_data_pinctrl	qcom,msm-cdc-pinctrl		okay
+/soc/spf_core_platform/tx_swr_clk_data_pinctrl	qcom,msm-cdc-pinctrl		okay
+/soc/spf_core_platform/cdc_dmic01_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/spf_core_platform/cdc_dmic23_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/spf_core_platform/cdc_dmic45_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/spf_core_platform/cdc_dmic67_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/spf_core_platform/msm_cdc_pinctrl_pri	qcom,msm-cdc-pinctrl		okay
+/soc/spf_core_platform/msm_cdc_pinctrl_quin	qcom,msm-cdc-pinctrl		okay
+/soc/vote_lpass_core_hw	qcom,audio-ref-clk		okay
+/soc/vote_lpass_audio_hw	qcom,audio-ref-clk		okay
+/soc/reboot_reason	qcom,reboot-reason		okay
+/soc/pmic-pon-log	qcom,pmic-pon-log		okay
+/soc/gpio_keys	gpio-keys		okay
+/soc/tcard_sim	card-detect		okay
+/soc/tp_module1	vivo,touch-panel-module		okay
+/soc/tp_module2	vivo,touch-panel-module		okay
+/soc/tp_module3	vivo,touch-panel-module		okay
+/soc/tp_module4	vivo,touch-panel-module		okay
+/soc/presskey_module1	vivo,vforce-module		okay
+/soc/presskey_module2	vivo,vforce-module		okay
+/soc/mobileevent	vivo,mobile_event		okay
+/soc/fg_common	vivo,fg-common		okay
+/soc/fuelsummary	vivo,fuelsummary		okay
+/soc/fp_id	fp-id		okay
+/soc/goodix_gf9518	goodix,udfingerprint		okay
+/soc/sar_power_device	sar-power		okay
+/soc/qcom,camera-flash@0	qcom,camera-flash		okay
+/soc/qcom,camera-flash@1	qcom,camera-flash		okay
+/soc/qcom,camera-flash@2	qcom,camera-flash		okay
+/soc/camera-vdig-regulator@0	regulator-fixed	0x00 0x00	okay
+/soc/qcom,cam-res-mgr	qcom,cam-res-mgr		okay
+/soc/camera-regulator@0	regulator-fixed	0x00 0x00	okay
+/soc/qcom,dsi-display-primary	qcom,dsi-display		okay
+/soc/qcom,dsi-display-secondary	qcom,dsi-display		okay
+/soc/display_gpio_regulator@1	qti-regulator-fixed		okay
+/soc/qcom,wb-display@0	qcom,wb-display		okay
+/soc/wsa_spkr_en1_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/wsa_spkr_en2_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/wsa2_spkr_en1_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/wsa2_spkr_en2_pinctrl	qcom,msm-cdc-pinctrl		disabled
+/soc/msm_cdc_pinctrl@32	qcom,msm-cdc-pinctrl		okay
+/soc/va_core_clk	qcom,audio-ref-clk		okay
+/soc/wsa_core_clk	qcom,audio-ref-clk		disabled
+/soc/wsa2_core_clk	qcom,audio-ref-clk		disabled
+/soc/rx_core_clk	qcom,audio-ref-clk		okay
+/soc/rx_core_tx_clk	qcom,audio-ref-clk		okay
+/soc/tx_core_clk	qcom,audio-ref-clk		okay
+/soc/wsa_core_tx_clk	qcom,audio-ref-clk		disabled
+/soc/wsa2_core_tx_clk	qcom,audio-ref-clk		disabled
+/soc/rx_mclk2_2x_clk	qcom,audio-ref-clk		okay
+/soc/clock_audio_sec	qcom,audio-ref-clk		disabled
+/soc/vivo-codec-common	vivo,vivo-codec-common		okay
+/soc/hifi_1v8@0	regulator-fixed		disabled
+/soc/hifi-codec	vivo,hifi-codec-pd1805		disabled
+/hypervisor	qcom,gunyah-hypervisor-1.0 qcom,gunyah-hypervisor simple-bus		okay
+/hypervisor/qcom,gunyah-vm	qcom,gunyah-vm-id-1.0 qcom,gunyah-vm-id		okay
+/hypervisor/qcom,gh-watchdog	qcom,gh-watchdog		okay
+/hypervisor/qcom,resource-manager-rpc@78748dd66bc1bed8	qcom,resource-manager-1-0 qcom,resource-manager qcom,gunyah-message-queue qcom,gunyah-capability	0x78748dd6 0x6bc1bed8 0x78748dd6 0x6bc138d7	okay

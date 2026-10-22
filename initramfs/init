@@ -1,0 +1,120 @@
+#!/bin/sh
+# initramfs/init — first userspace for the iQOO 9T bring-up kernel.
+#
+# There is no usable framebuffer handoff and no retail UART, so everything
+# happens over a USB gadget: an ACM serial console on ttyGS0 plus an NCM
+# network interface with a shell on telnet/nc.
+#
+# Busybox is /bin/busybox (static-pie aarch64 from Alpine).
+
+/bin/busybox --install -s /bin
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devtmpfs none /dev 2>/dev/null
+mkdir -p /dev/pts /dev/shm
+mount -t devpts devpts /dev/pts
+mount -t tmpfs tmpfs /dev/shm
+mount -t debugfs none /sys/kernel/debug 2>/dev/null
+mount -t configfs none /sys/kernel/config 2>/dev/null
+
+echo 5 > /proc/sys/kernel/printk 2>/dev/null
+
+# Keep a boot log where we can fetch it even if the console comes up late.
+dmesg > /boot.log 2>/dev/null
+
+banner() {
+    echo
+    echo "=== iQOO 9T (I2201) bring-up kernel ==="
+    echo "model:    $(tr -d '\0' < /proc/device-tree/model 2>/dev/null)"
+    echo "kernel:   $(uname -r)"
+    echo "machine:  $(uname -m)"
+    echo
+}
+
+# ---------------------------------------------------------------- USB gadget
+G=/sys/kernel/config/usb_gadget/g1
+setup_gadget() {
+    mkdir -p "$G" || return 0
+    cd "$G" || return 0
+
+    echo 0x1d6b > idVendor
+    echo 0x0104 > idProduct
+    echo 0x0200 > bcdUSB
+    echo 0x0100 > bcdDevice
+    echo 0xef > bDeviceClass
+    echo 0x02 > bDeviceSubClass
+    echo 0x01 > bDeviceProtocol
+    echo 500 > bMaxPower
+
+    mkdir -p strings/0x409
+    echo "iQOO9T0001" > strings/0x409/serialnumber
+    echo "iqoo9t" > strings/0x409/manufacturer
+    echo "Linux bring-up gadget" > strings/0x409/product
+
+    mkdir -p configs/c.1/strings/0x409
+    echo "acm+ncm" > configs/c.1/strings/0x409/configuration
+    echo 500 > configs/c.1/MaxPower
+
+    mkdir -p functions/acm.usb0
+    mkdir -p functions/ncm.usb0
+    # Locally administered addresses, nothing derived from the device.
+    echo "02:11:22:33:44:55" > functions/ncm.usb0/dev_addr
+    echo "02:11:22:33:44:66" > functions/ncm.usb0/host_addr
+
+    ln -sf functions/acm.usb0 configs/c.1/acm.usb0 2>/dev/null
+    ln -sf functions/ncm.usb0 configs/c.1/ncm.usb0 2>/dev/null
+
+    UDC=$(ls /sys/class/udc 2>/dev/null | head -1)
+    if [ -n "$UDC" ]; then
+        echo "$UDC" > UDC
+        echo "gadget bound to $UDC"
+    else
+        echo "no UDC yet, will retry"
+        return 1
+    fi
+}
+
+# The EUSB2 PHY / DWC3 may take a moment to probe.
+i=0
+while ! setup_gadget; do
+    i=$((i + 1))
+    [ "$i" -ge 60 ] && break
+    sleep 1
+done
+
+# NCM link, fixed addressing (no DHCP anywhere in this image).  The netdev
+# only exists once the function is bound, so retry rather than race it.
+i=0
+while [ ! -e /sys/class/net/usb0 ]; do
+    i=$((i + 1))
+    [ "$i" -ge 30 ] && break
+    sleep 1
+done
+ip link set usb0 up 2>/dev/null
+ip addr add 10.11.12.1/24 dev usb0 2>/dev/null
+echo "net: $(ip -4 addr show usb0 2>/dev/null | tr -s ' ')" > /dev/kmsg 2>/dev/null
+
+banner > /dev/ttyGS0 2>/dev/null
+
+# --------------------------------------------------------------- consoles
+# ACM serial console; respawn so a disconnect does not kill the shell.
+while true; do
+    setsid sh -c 'banner >/dev/ttyGS0; exec sh -i </dev/ttyGS0 >/dev/ttyGS0 2>&1' \
+        >/dev/null 2>&1
+    sleep 1
+done &
+
+# Network shells: telnet for busybox telnet, nc for anything else.
+telnetd -l /bin/sh -p 23 -F >/dev/null 2>&1 &
+while true; do
+    nc -l -p 5555 -e /bin/sh >/dev/null 2>&1
+    sleep 1
+done &
+
+# Everything below runs on the kernel console (tty0 console not available);
+# keep PID 1 alive and useful.
+while true; do
+    sleep 30
+done

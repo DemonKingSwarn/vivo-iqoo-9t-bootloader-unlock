@@ -517,16 +517,38 @@ fastboot flash boot artifacts/boot_a.img
 
 ### 10.2 Linux
 
-Unlocking is the prerequisite, not the whole job. SM8475 has mainline and
-postmarketOS work, but there is **no turnkey iQOO 9T port**. A realistic plan:
+Unlocking is the prerequisite, not the whole job. There is **no upstream
+SM8475 platform and no turnkey iQOO 9T port**; the port lives in our own kernel
+fork (`linux-iqoo9t/`, branch `cape`, base 7.2.11). Details and rationale are in
+`docs/findings.md` §20–§21.
 
-1. Build or obtain an SM8475 mainline kernel with a device tree for
-   `PD2217F`/`taro`.
-2. Package it as an Android boot image (`boot.img`) with an initramfs that
-   mounts your rootfs.
-3. Flash the kernel to `boot` and put the rootfs on `userdata` (or a dedicated
-   partition), then boot with `fastboot boot` first to test.
-4. Keep the stock boot image to get back to Android.
+Milestone 1 is a RAM-only boot test — no flashing:
+
+```bash
+tools/host/bringup.sh build      # Image + sm8450-iqoo9t.dtb + initramfs + boot.img
+adb reboot bootloader
+fastboot boot artifacts/boot-iqoo9t.img
+```
+
+If it comes up, the phone exposes a USB gadget within a few seconds:
+
+```bash
+# serial console (ACM), respawns a shell
+picocom -b 115200 /dev/ttyACM0
+
+# or over the NCM link
+ip addr add 10.11.12.2/24 dev usb0   # host side
+telnet 10.11.12.1
+# or: nc 10.11.12.1 5555
+```
+
+From that shell: `dmesg | head -50`, `cat /proc/device-tree/model`, `ls
+/dev/block`, and check whether UFS probed (`dmesg | grep -i ufs`). The next
+milestone is a UFS root (GSI userdata or a real rootfs), then display/touch.
+
+Fallbacks if the legacy v0 boot image is rejected by ABL: flash our own v4
+`vendor_boot` (our DTB + ramdisk) with a v4 `boot` that carries only the
+kernel. Stock `vendor_boot.img` and `boot.img` are in `artifacts/` for restore.
 
 `fastboot boot <image>` is the safe first test — it does not write anything.
 
