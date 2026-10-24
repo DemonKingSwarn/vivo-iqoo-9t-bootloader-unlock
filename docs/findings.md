@@ -919,3 +919,118 @@ Two small fork patches:
 - Blind-debug scaffolding: simpledrm on the ABL splash carveout
   (`splash@b8000000`) and ramoops at `0xba000000`, so a silent panic still
   leaves a log in `/sys/fs/pstore` after the next boot.
+
+## §22 — The vivo unlock chain, disassembled (signing keys are public-only)
+
+Source: `PD2217F_EX_A_15.3.19.3.W30.V000L1` (the package whose `boot.img`
+sha256 matches our stock restore image, so this is the build the phone ran).
+
+### Where the ABL actually lives
+
+`abl.elf` (4.2 MB) is **not** an encrypted blob and not a stub: its `LOAD`
+segment at `0x9fa00000` is a plain UEFI firmware volume (`_FVH`, filesystem
+GUID `8c8ce578-8a3d-4f1c-9935-896185c32dd3`). One of its three FFS files holds
+an LZMA-compressed inner FV, and that inner volume contains **`LinuxLoader`** —
+the real ABL fastboot application:
+
+```
+abl.elf → FV → compressed section → FV(6.5 MB) → LinuxLoader (PE32+ ARM64)
+.text 0x1000..0x97000   .data 0x97000..0xb7000   (file offset == VA)
+```
+
+`uefi.elf` is the XBL-side UEFI (drivers, panel XMLs, `uefiplat.cfg`); it has no
+fastboot app. The 2.6 MB of entropy-8 data in both files is just compressed DXE,
+not encryption.
+
+### The complete fastboot command table (0x93a30, 8-byte {name, handler} pairs)
+
+```
+flash:  erase:  set_active  flashing get_unlock_ability
+oem enable-charger-screen / disable-charger-screen / off-mode-charge
+oem select-display-panel / device-info
+reboot  reboot-recovery  reboot-fastboot  reboot-bootloader
+getvar:  download:  getid  getcpuid
+vivo_bsp unlock_vivo   bbk unlock_vivo
+vivo_bsp lock_vivo     bbk lock_vivo
+oem product-model  getrootid  vivo_bsp root_vivo  vivo_bsp unroot_vivo
+oem remount  oem ota-test  oem op-entry  oem optr-flag
+oem device-imei / device-oemname / device-name / device-id / ufs-id / device-sdk
+oem update-app  oem getinfo  oem get-info  oem reboot-edl
+oem bspdebug  oem overlay_cfg  oem overlay_efs  oem reboot-recovery
+oem reboot-fastboot  oem memtest
+```
+
+There is **no `flashing unlock`, no `flashing lock`, and no
+`flashing avb_custom_key`** — the strings for the last one exist but nothing
+points at them. The AOSP unlock path has been deliberately removed.
+
+### The unlock protocol
+
+`vivo_bsp unlock_vivo <sigdata>` → `0x6cf18` → `0x6ce70` → `0x11898`:
+
+1. `sigdata` must be 513..767 bytes of ASCII (else `fastboot unlock sigdata
+   size error...`). The **last 512 characters are hex** and decode to a
+   256-byte RSA-2048 signature; everything before them is the message.
+2. The message is the vivo authorization blob:
+   `1!;emmcid=<device id>&extra=<...>&key=<...>&op=<...>&seed=<...>&ver=Alpha0`
+   (format fragments at 0x83cf0..0x83d15).
+3. The `op` field selects one of five embedded keys, then libavb-style
+   `avb_rsa_verify` (PKCS#1 v1.5, SHA-256) checks the signature.
+4. On success → `devinfo[0x0d] = 1` and `devinfo[0x0e] = 1`
+   (`0x49f18(0,1)`/`0x49f18(1,1)` → cache at `0xabc68`, flushed by
+   `0x2d608(1, 0xabc68, 0x998)`), then the RAM shadow flags `0xac600`/
+   `0xac601` are set so AVB stops verifying `boot`
+   ("Device is unlocked, Skipping boot verification").
+
+`bbk unlock_vivo` (`0x6fe90`) does no unlocking at all: it answers OKAY
+"unlock device in AT mode!" only when `is_device_unlocked()` is already true or
+the AT-mode flag `[0xacfe0+0xc]` is set, and FAIL " unclock fail." otherwise —
+exactly what the live device returns.
+
+`vivo_bsp lock_vivo` (`0x6cfd0`) is free: it writes 0 to both devinfo bytes with
+no signature. Locking is unauthenticated; unlocking is not.
+
+### The five signing keys are AVB-format **public** keys
+
+`0x97a30` is a 5-entry table of `{codename, ..., key_ptr, 0x208}`. Each key is
+520 bytes = `[u32 bits=2048 BE][u32 n0inv BE][256-byte n][256-byte rr]`, which is
+exactly `AvbRSAPublicKey` ({len, n0inv, n, rr}) — and the parser at `0x139e8`
+loads them into precisely that four-field struct, with e hardcoded to 65537.
+
+This is not `(n, d)`. Proof, computed from the image:
+
+| codename | bits | `n0inv·n ≡ -1 (mod 2³²)` | `rr = 2^4096 mod n` | SHA-256 of SPKI |
+|---|---|---|---|---|
+| chocolate | 2048 | ✓ | ✓ | `7a960f52…f426` |
+| donuts | 2048 | ✓ | ✓ | `16b79736…2987` |
+| hedgehog | 2048 | ✓ | ✓ | `e2ffde15…a2d6` |
+| lollipop | 2048 | ✓ | ✓ | `9de7da03…660a` |
+| kangaroo | 2048 | ✓ | ✓ | `81f93ecc…cbf2` |
+
+`rr` is derived from `n` alone; the CRT secrets (`p`, `q`, `dp`, `dq`, `qinv`)
+appear nowhere. The exported public keys are in `docs/keys/vivo-abl-*.pem`.
+
+The `op` used for unlocking is **hedgehog**; the EDL request path uses
+**chocolate** (visible in the device's own output: `key=chocolate&op=edl0`).
+
+### What this means
+
+- The "vivo signing key" is not in the firmware in any recoverable form. Only
+  the public moduli are, and RSA-2048 private-key recovery from them is
+  factoring, not reverse engineering.
+- Every token is bound to `emmcid` (and, when available, a per-request `seed`),
+  so a token captured from another device — or an older one from the same
+  device — is not replayable.
+- `oem reboot-edl` prints that same `1!;emmcid=…&op=edl0&…` request only because
+  EDL entry is gated behind the unlock flag; the string is what you would hand
+  to vivo for signing, not a command.
+- The only writer of `devinfo[0x0d]` is the signature-checked path (`0x49f18`
+  has three callers: the two signed writes and one internal, vtable-dispatched
+  devinfo sync that no fastboot command reaches).
+
+Independently of the token story, the ELF hash segment carries vivo's *image*
+signing chain (`vivo mobile ecc test` ← `attest` ← `root`, all ecdsa-with-SHA384,
+P-384, valid 2021–2121). Public certificates only, same conclusion.
+
+**Recovery requires 9008.** Nothing in the bootloader offers a software route
+into it while `devinfo[0x0d]` is 0.
