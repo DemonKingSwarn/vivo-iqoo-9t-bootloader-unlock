@@ -32,3 +32,6 @@ linux-iqoo9t/
 # local agent scaffolding
 .opencode/
 /tmp/
+
+# vendor firmware archives dropped in the repo root
+/Vivo_*.7z
